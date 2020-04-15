@@ -24,3 +24,17 @@
 		</div><!-- .informacion-header -->
 	</header>
 	
+	<div class="menu-principal">
+		<div class="contenedor">
+			<?php 
+				$args = array(
+					'theme_location' => 'header_menu',
+					'container' => 'nav',
+					'container-class' => 'menu-sitio',
+					'container_id' => 'menu'
+				);
+
+				wp_nav_menu($args);
+			 ?>
+		</div>
+	</div>
