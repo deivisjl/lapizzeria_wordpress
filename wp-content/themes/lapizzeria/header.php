@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	<header class="site-header">
+		<div class="logo">
+			<a href="<?php echo esc_url(home_url('/')); ?>">
+				<img src="<?php echo get_template_directory_uri(); ?>/img/logo.svg" alt="logo">
+			</a>
+		</div>
+		<div class="informacion-header">
+			<div class="redes-sociales">
+				<!-- TODO: Agregar menu -->
+			</div><!-- Redes sociales -->
+			<div class="direccion">
+				<p>8179 Bay AVenue Mountain View, CA 94043</p>
+				<p>Teléfono: 998633565</p>
+			</div>
+		</div><!-- .informacion-header -->
+	</header>
+	
