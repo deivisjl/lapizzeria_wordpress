@@ -18,6 +18,9 @@ function lapizzeria_styles(){
 
 	/* Agregar el slicknav */
 	wp_enqueue_script('slicknavJS', get_template_directory_uri() . '/js/slicknav.min.js', array('jquery'), '1.0.10', true);
+
+	/* Agregar el script */
+	wp_enqueue_script('scriptsJS', get_template_directory_uri() . '/js/scripts.js', array('jquery'), '1.0.0', true);
 }
 
 add_action('wp_enqueue_scripts','lapizzeria_styles');
