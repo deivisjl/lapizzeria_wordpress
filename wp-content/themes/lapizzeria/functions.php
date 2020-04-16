@@ -1,5 +1,12 @@
 <?php 
 
+function lapizzeria_setup(){
+
+	add_theme_support('post-thumbnails');
+}
+
+/* Habilitar soporte a fotos */
+add_action('after_setup_theme','lapizzeria_setup');
 /* CSS y JS*/
 
 function lapizzeria_styles(){
