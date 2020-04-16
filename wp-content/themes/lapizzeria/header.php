@@ -30,7 +30,7 @@
 				$args = array(
 					'theme_location' => 'header_menu',
 					'container' => 'nav',
-					'container-class' => 'menu-sitio',
+					'container_class' => 'menu-sitio',
 					'container_id' => 'menu'
 				);
 
