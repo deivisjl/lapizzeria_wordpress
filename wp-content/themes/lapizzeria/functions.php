@@ -28,7 +28,8 @@ add_action('wp_enqueue_scripts','lapizzeria_styles');
 /* Menus */
 function lapizzeria_menus(){
 	register_nav_menus(array(
-		'header_menu' => 'Header menu'
+		'header_menu' => 'Header menu',
+		'redes-sociales' => 'Redes Sociales'
 	));
 }
 

@@ -17,6 +17,17 @@
 			<div class="informacion-header">
 				<div class="redes-sociales">
 					<!-- TODO: Agregar menu -->
+					<?php 
+						$args = array(
+							'theme_location' => 'redes-sociales',
+							'container' => 'nav',
+							'container_class' => 'sociales',
+							'link_before' => '<span class="sr-text">',
+							'link_after' => '</span>'
+						);
+
+						wp_nav_menu($args);
+					 ?>
 				</div><!-- Redes sociales -->
 				<div class="direccion">
 					<p>8179 Bay AVenue Mountain View, CA 94043</p>
