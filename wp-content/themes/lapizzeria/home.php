@@ -13,7 +13,7 @@
 		</div>
 	</div>
 
-	<div class="seccion contenedor">
+	<div class="seccion contenedor con-sidebar">
 		<main class="contenido-principal">
 			<?php while(have_posts()):the_post(); ?>
 				<article class="entrada-blog">
@@ -46,5 +46,6 @@
 				</article>
 			<?php endwhile; ?>
 		</main>
+		<?php get_sidebar(); ?>
 	</div>
 <?php get_footer(); ?>
