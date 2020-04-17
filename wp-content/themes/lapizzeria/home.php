@@ -45,6 +45,11 @@
 					</div>
 				</article>
 			<?php endwhile; ?>
+
+			<div class="paginacion">
+				<?php next_posts_link('Anteriores'); ?>
+				<?php previous_posts_link('Siguientes'); ?>
+			</div>
 		</main>
 		<?php get_sidebar(); ?>
 	</div>
