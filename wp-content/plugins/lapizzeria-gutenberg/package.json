@@ -1,0 +1,17 @@
+{
+  "name": "lapizzeria-gutenberg",
+  "version": "1.0.0",
+  "description": "Agrega bloques de gutenberg",
+  "main": "index.js",
+  "scripts": {
+    "build": "wp-scripts build",
+    "start": "wp-scripts start"
+  },
+  "author": "deivisjl",
+  "license": "ISC",
+  "devDependencies": {
+    "@svgr/webpack": "^5.4.0",
+    "@wordpress/scripts": "^8.0.1",
+    "url-loader": "^4.1.0"
+  }
+}
