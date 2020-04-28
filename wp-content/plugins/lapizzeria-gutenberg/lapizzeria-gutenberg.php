@@ -25,6 +25,22 @@ function lapizzeria_registrar_bloques{
 		array('wp-blocks','wp-i18n','wp-element','wp-editor'), //dependencias
 		filemtime(plugin_dir_path(__FILE__).'build/index.js') //ultima version
 	);
+
+	//estilos para el editor (unicamente en gutenberg)
+	wp_register_style(
+		'lapizzeria-editor-styles', //nombre
+		plugins_url('build/index.js', __FILE__), //archivos CSS con los bloques
+		array('wp-edit-blocks'),
+		filemtime(plugin_dir_path(__FILE__). 'build/editor.css')
+	);
+
+	//estilos para los bloques (backend y fronted)
+	wp_register_style(
+		'lapizzeria-fronted-styles', //nombre
+		plugins_url('build/index.js', __FILE__), //archivos CSS con los bloques
+		array(),
+		filemtime(plugin_dir_path(__FILE__). 'build/styles.css')
+	);
 }
 
 add_action('init','lapizzeria_registrar_bloques');
