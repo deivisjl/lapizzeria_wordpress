@@ -11,7 +11,7 @@
 if(!defined('ABSPATH')) exit;
 
 /** Registrar bloques, scripts y CSS **/
-function lapizzeria_registrar_bloques{
+function lapizzeria_registrar_bloques(){
 
 	//Si gutenberg no existe, salir
 	if(function_exists('register_block_type')){
@@ -41,6 +41,20 @@ function lapizzeria_registrar_bloques{
 		array(),
 		filemtime(plugin_dir_path(__FILE__). 'build/styles.css')
 	);
+
+	//Arreglo de bloques
+	$blocks = [
+		'lapizzeria/boxes'
+	];
+
+	//Recorrer bloques y agregar scripts y styles
+	foreach ($blocks as $block) {
+		register_block_type($block, array(
+			'editor_script' => 'lapizzeria-editor-script', //script principal
+			'editor_style' => 'lapizzeria-editor-styles', //estilos para el editor
+			'style' => 'lapizzeria-fronted-styles' //estilos para el frontend
+		));
+	}
 }
 
 add_action('init','lapizzeria_registrar_bloques');
