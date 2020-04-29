@@ -21,10 +21,17 @@ registerBlockType('lapizzeria/boxes', {
 	icon:{ src: Logo },
 	category:'lapizzeria',
 	edit:()=>{
+
+		const onChangeHeadingBox = (nuevoHeading) =>{
+			
+		}
+
 		return (
 			<div>
 				<h2>
-					<RichText placeholder="Agrega el encabezado"/>
+					<RichText 
+						placeholder="Agrega el encabezado"
+						onChange={onChangeHeadingBox}/>
 				</h2>
 			</div>
 		)

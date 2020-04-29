@@ -121,8 +121,11 @@ registerBlockType('lapizzeria/boxes', {
   },
   category: 'lapizzeria',
   edit: function edit() {
+    var onChangeHeadingBox = function onChangeHeadingBox(nuevoHeading) {};
+
     return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h2", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText, {
-      placeholder: "Agrega el encabezado"
+      placeholder: "Agrega el encabezado",
+      onChange: onChangeHeadingBox
     })));
   },
   save: function save() {
