@@ -99,8 +99,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _pizzeria_icon_svg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../pizzeria-icon.svg */ "./src/pizzeria-icon.svg");
 
-var registerBlockType = wp.blocks.registerBlockType; //logo para el bloque
+var registerBlockType = wp.blocks.registerBlockType;
+var RichText = wp.editor.RichText; //logo para el bloque
 
+
+/*
+	PASOS PARA CREAR UN BLOQUE EN GUTENBERG
+	1.- Importar el componente que utilizaras
+	2.- Coloca el componente donde deseas utilizarlo
+	3.- Crea una funcion que lea los contenidos
+	4.- Registra un atributo
+	5.- Extraer el contenido desde props
+	6.- Guarda el contenido con setAttributes
+	7.- Lee los contenidos guardados en save()
+*/
 
 registerBlockType('lapizzeria/boxes', {
   title: 'Pizzeria Cajas',
