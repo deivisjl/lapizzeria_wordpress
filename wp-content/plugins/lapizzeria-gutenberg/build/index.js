@@ -120,10 +120,19 @@ registerBlockType('lapizzeria/boxes', {
     src: _pizzeria_icon_svg__WEBPACK_IMPORTED_MODULE_1__["ReactComponent"]
   },
   category: 'lapizzeria',
+  attributes: {
+    headingBox: {
+      type: 'string',
+      source: 'html',
+      selector: '.box h2'
+    }
+  },
   edit: function edit() {
     var onChangeHeadingBox = function onChangeHeadingBox(nuevoHeading) {};
 
-    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h2", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText, {
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "box"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h2", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText, {
       placeholder: "Agrega el encabezado",
       onChange: onChangeHeadingBox
     })));
