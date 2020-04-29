@@ -34,7 +34,7 @@ registerBlockType('lapizzeria/boxes', {
 		const { attributes: { headingBox }, setAttributes } = props;
 
 		const onChangeHeadingBox = (nuevoHeading) =>{
-			//console.log(nuevoHeading);
+			setAttributes({ headingbox: nuevoHeading });
 		}
 
 		return (

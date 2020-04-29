@@ -133,7 +133,10 @@ registerBlockType('lapizzeria/boxes', {
     var headingBox = props.attributes.headingBox,
         setAttributes = props.setAttributes;
 
-    var onChangeHeadingBox = function onChangeHeadingBox(nuevoHeading) {//console.log(nuevoHeading);
+    var onChangeHeadingBox = function onChangeHeadingBox(nuevoHeading) {
+      setAttributes({
+        headingbox: nuevoHeading
+      });
     };
 
     return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
