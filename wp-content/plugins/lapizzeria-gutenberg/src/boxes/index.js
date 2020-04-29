@@ -22,7 +22,11 @@ registerBlockType('lapizzeria/boxes', {
 	category:'lapizzeria',
 	edit:()=>{
 		return (
-			<h1>Se ve en el editor</h1>
+			<div>
+				<h2>
+					<RichText placeholder="Agrega el encabezado"/>
+				</h2>
+			</div>
 		)
 	},
 	save:()=>{
