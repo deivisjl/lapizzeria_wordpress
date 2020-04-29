@@ -30,7 +30,7 @@ add_filter('block_categories','lapizzeria_categoria_personalizada',10,2);
 function lapizzeria_registrar_bloques(){
 
 	//Si gutenberg no existe, salir
-	if(function_exists('register_block_type')){
+	if(!function_exists('register_block_type')){
 		return;
 	}
 

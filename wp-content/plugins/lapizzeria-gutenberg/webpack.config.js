@@ -8,8 +8,7 @@ module.exports = {
       ...defaultConfig.module.rules,
       {
         test: /\.css$/,
-        //use: ["css-loader", "style-loader"],
-        use:["@svgr/webpack","url-loader"]
+        use: ["css-loader", "style-loader"],
       }
     ]
   }

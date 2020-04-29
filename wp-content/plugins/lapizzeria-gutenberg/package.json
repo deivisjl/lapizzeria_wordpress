@@ -13,5 +13,9 @@
     "@svgr/webpack": "^5.4.0",
     "@wordpress/scripts": "^8.0.1",
     "url-loader": "^4.1.0"
+  },
+  "dependencies": {
+    "css-loader": "^3.5.3",
+    "style-loader": "^1.2.1"
   }
 }
