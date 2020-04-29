@@ -127,8 +127,14 @@ registerBlockType('lapizzeria/boxes', {
       selector: '.box h2'
     }
   },
-  edit: function edit() {
-    var onChangeHeadingBox = function onChangeHeadingBox(nuevoHeading) {};
+  edit: function edit(props) {
+    //console.log(props);
+    //extraer el componetido desde props
+    var headingBox = props.attributes.headingBox,
+        setAttributes = props.setAttributes;
+
+    var onChangeHeadingBox = function onChangeHeadingBox(nuevoHeading) {//console.log(nuevoHeading);
+    };
 
     return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: "box"
