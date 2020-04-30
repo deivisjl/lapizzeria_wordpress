@@ -34,7 +34,7 @@ registerBlockType('lapizzeria/boxes', {
 		const { attributes: { headingBox }, setAttributes } = props;
 
 		const onChangeHeadingBox = (nuevoHeading) =>{
-			setAttributes({ headingbox: nuevoHeading });
+			setAttributes({ headingBox: nuevoHeading });
 		}
 
 		return (
@@ -42,14 +42,28 @@ registerBlockType('lapizzeria/boxes', {
 				<h2>
 					<RichText 
 						placeholder="Agrega el encabezado"
-						onChange={onChangeHeadingBox}/>
+						onChange={onChangeHeadingBox}
+						value={ headingBox }/>
 				</h2>
 			</div>
 		)
 	},
-	save:()=>{
-		return(
-			<h1>Se ve en el frontend</h1>
+	save:(props)=>{
+
+		//console.log(props);
+		//extraer el componetido desde props
+		const { attributes: { headingBox }, setAttributes } = props;
+
+		const onChangeHeadingBox = (nuevoHeading) =>{
+			setAttributes({ headingBox: nuevoHeading });
+		}
+
+		return (
+			<div className="box">
+				<h2>
+					<RichText.Content value={headingBox}/>
+				</h2>
+			</div>
 		)
 	}
 });

@@ -135,7 +135,7 @@ registerBlockType('lapizzeria/boxes', {
 
     var onChangeHeadingBox = function onChangeHeadingBox(nuevoHeading) {
       setAttributes({
-        headingbox: nuevoHeading
+        headingBox: nuevoHeading
       });
     };
 
@@ -143,11 +143,27 @@ registerBlockType('lapizzeria/boxes', {
       className: "box"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h2", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText, {
       placeholder: "Agrega el encabezado",
-      onChange: onChangeHeadingBox
+      onChange: onChangeHeadingBox,
+      value: headingBox
     })));
   },
-  save: function save() {
-    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h1", null, "Se ve en el frontend");
+  save: function save(props) {
+    //console.log(props);
+    //extraer el componetido desde props
+    var headingBox = props.attributes.headingBox,
+        setAttributes = props.setAttributes;
+
+    var onChangeHeadingBox = function onChangeHeadingBox(nuevoHeading) {
+      setAttributes({
+        headingBox: nuevoHeading
+      });
+    };
+
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "box"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h2", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText.Content, {
+      value: headingBox
+    })));
   }
 });
 
