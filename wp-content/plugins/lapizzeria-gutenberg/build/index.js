@@ -125,17 +125,30 @@ registerBlockType('lapizzeria/boxes', {
       type: 'string',
       source: 'html',
       selector: '.box h2'
+    },
+    textBox: {
+      type: 'string',
+      source: 'html',
+      selector: '.box p'
     }
   },
   edit: function edit(props) {
     //console.log(props);
     //extraer el componetido desde props
-    var headingBox = props.attributes.headingBox,
+    var _props$attributes = props.attributes,
+        headingBox = _props$attributes.headingBox,
+        textBox = _props$attributes.textBox,
         setAttributes = props.setAttributes;
 
     var onChangeHeadingBox = function onChangeHeadingBox(nuevoHeading) {
       setAttributes({
         headingBox: nuevoHeading
+      });
+    };
+
+    var onChangeTextBox = function onChangeTextBox(nuevoTexto) {
+      setAttributes({
+        textBox: nuevoTexto
       });
     };
 
@@ -145,24 +158,28 @@ registerBlockType('lapizzeria/boxes', {
       placeholder: "Agrega el encabezado",
       onChange: onChangeHeadingBox,
       value: headingBox
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText, {
+      placeholder: "Agrega el texto",
+      onChange: onChangeTextBox,
+      value: textBox
     })));
   },
   save: function save(props) {
     //console.log(props);
     //extraer el componetido desde props
-    var headingBox = props.attributes.headingBox,
-        setAttributes = props.setAttributes;
-
-    var onChangeHeadingBox = function onChangeHeadingBox(nuevoHeading) {
-      setAttributes({
-        headingBox: nuevoHeading
-      });
-    };
+    var _props$attributes2 = props.attributes,
+        headingBox = _props$attributes2.headingBox,
+        textBox = _props$attributes2.textBox;
+    /*const onChangeHeadingBox = (nuevoHeading) =>{
+    	setAttributes({ headingBox: nuevoHeading });
+    }*/
 
     return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: "box"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h2", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText.Content, {
       value: headingBox
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText.Content, {
+      value: textBox
     })));
   }
 });

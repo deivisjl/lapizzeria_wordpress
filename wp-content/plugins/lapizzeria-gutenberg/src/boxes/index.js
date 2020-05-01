@@ -25,17 +25,27 @@ registerBlockType('lapizzeria/boxes', {
 			type:'string',
 			source:'html',
 			selector:'.box h2'
+		},
+		textBox:{
+			type:'string',
+			source:'html',
+			selector:'.box p'
 		}
 	},
 	edit:(props)=>{
 
 		//console.log(props);
 		//extraer el componetido desde props
-		const { attributes: { headingBox }, setAttributes } = props;
+		const { attributes: { headingBox, textBox }, setAttributes } = props;
 
 		const onChangeHeadingBox = (nuevoHeading) =>{
 			setAttributes({ headingBox: nuevoHeading });
 		}
+
+		const onChangeTextBox = (nuevoTexto) =>{
+			setAttributes({ textBox: nuevoTexto });
+		}
+
 
 		return (
 			<div className="box">
@@ -45,6 +55,11 @@ registerBlockType('lapizzeria/boxes', {
 						onChange={onChangeHeadingBox}
 						value={ headingBox }/>
 				</h2>
+				<p>
+					<RichText placeholder="Agrega el texto"
+					onChange={onChangeTextBox}
+					value={textBox}/>
+				</p>
 			</div>
 		)
 	},
@@ -52,17 +67,20 @@ registerBlockType('lapizzeria/boxes', {
 
 		//console.log(props);
 		//extraer el componetido desde props
-		const { attributes: { headingBox }, setAttributes } = props;
+		const { attributes: { headingBox, textBox } } = props;
 
-		const onChangeHeadingBox = (nuevoHeading) =>{
+		/*const onChangeHeadingBox = (nuevoHeading) =>{
 			setAttributes({ headingBox: nuevoHeading });
-		}
+		}*/
 
 		return (
 			<div className="box">
 				<h2>
 					<RichText.Content value={headingBox}/>
 				</h2>
+				<p>
+					<RichText.Content value={textBox}/>
+				</p>
 			</div>
 		)
 	}
