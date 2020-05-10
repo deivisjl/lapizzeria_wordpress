@@ -100,7 +100,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _pizzeria_icon_svg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../pizzeria-icon.svg */ "./src/pizzeria-icon.svg");
 
 var registerBlockType = wp.blocks.registerBlockType;
-var RichText = wp.editor.RichText; //logo para el bloque
+var _wp$editor = wp.editor,
+    RichText = _wp$editor.RichText,
+    InspectorControls = _wp$editor.InspectorControls,
+    ColorPalette = _wp$editor.ColorPalette;
+var PanelBody = wp.components.PanelBody; //logo para el bloque
 
 
 /*
@@ -152,7 +156,16 @@ registerBlockType('lapizzeria/boxes', {
       });
     };
 
-    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(InspectorControls, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, {
+      title: 'Color de Fondo',
+      initialOpen: true
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "components-base-control"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "components-base-control__field"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("label", {
+      className: "components-base-control__label"
+    }, "Color de Fondo"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(ColorPalette, null))))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: "box"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h2", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText, {
       placeholder: "Agrega el encabezado",
@@ -162,7 +175,7 @@ registerBlockType('lapizzeria/boxes', {
       placeholder: "Agrega el texto",
       onChange: onChangeTextBox,
       value: textBox
-    })));
+    }))));
   },
   save: function save(props) {
     //console.log(props);
@@ -170,10 +183,6 @@ registerBlockType('lapizzeria/boxes', {
     var _props$attributes2 = props.attributes,
         headingBox = _props$attributes2.headingBox,
         textBox = _props$attributes2.textBox;
-    /*const onChangeHeadingBox = (nuevoHeading) =>{
-    	setAttributes({ headingBox: nuevoHeading });
-    }*/
-
     return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: "box"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h2", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText.Content, {

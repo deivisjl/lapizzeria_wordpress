@@ -1,5 +1,6 @@
 const { registerBlockType } = wp.blocks;
-const { RichText } = wp.editor;
+const { RichText, InspectorControls, ColorPalette } = wp.editor;
+const { PanelBody } = wp.components;
 
 //logo para el bloque
 
@@ -48,19 +49,36 @@ registerBlockType('lapizzeria/boxes', {
 
 
 		return (
-			<div className="box">
-				<h2>
-					<RichText 
-						placeholder="Agrega el encabezado"
-						onChange={onChangeHeadingBox}
-						value={ headingBox }/>
-				</h2>
-				<p>
-					<RichText placeholder="Agrega el texto"
-					onChange={onChangeTextBox}
-					value={textBox}/>
-				</p>
-			</div>
+			<>
+				<InspectorControls>
+					<PanelBody
+						title={'Color de Fondo'}
+						initialOpen={true}
+					>
+						<div className="components-base-control">
+							<div className="components-base-control__field">
+								<label className="components-base-control__label">
+									Color de Fondo
+								</label>
+								<ColorPalette></ColorPalette>
+							</div>
+						</div>
+					</PanelBody>
+				</InspectorControls>
+				<div className="box">
+					<h2>
+						<RichText 
+							placeholder="Agrega el encabezado"
+							onChange={onChangeHeadingBox}
+							value={ headingBox }/>
+					</h2>
+					<p>
+						<RichText placeholder="Agrega el texto"
+						onChange={onChangeTextBox}
+						value={textBox}/>
+					</p>
+				</div>
+			</>
 		)
 	},
 	save:(props)=>{
@@ -68,10 +86,6 @@ registerBlockType('lapizzeria/boxes', {
 		//console.log(props);
 		//extraer el componetido desde props
 		const { attributes: { headingBox, textBox } } = props;
-
-		/*const onChangeHeadingBox = (nuevoHeading) =>{
-			setAttributes({ headingBox: nuevoHeading });
-		}*/
 
 		return (
 			<div className="box">
