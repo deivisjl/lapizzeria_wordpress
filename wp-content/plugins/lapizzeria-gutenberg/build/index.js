@@ -137,6 +137,9 @@ registerBlockType('lapizzeria/boxes', {
     },
     colorFondo: {
       type: 'string'
+    },
+    colorTexto: {
+      type: 'string'
     }
   },
   edit: function edit(props) {
@@ -146,6 +149,7 @@ registerBlockType('lapizzeria/boxes', {
         headingBox = _props$attributes.headingBox,
         textBox = _props$attributes.textBox,
         colorFondo = _props$attributes.colorFondo,
+        colorTexto = _props$attributes.colorTexto,
         setAttributes = props.setAttributes;
 
     var onChangeHeadingBox = function onChangeHeadingBox(nuevoHeading) {
@@ -166,6 +170,12 @@ registerBlockType('lapizzeria/boxes', {
       });
     };
 
+    var onChangeColorTexto = function onChangeColorTexto(nuevoColor) {
+      setAttributes({
+        colorTexto: nuevoColor
+      });
+    };
+
     return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(InspectorControls, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, {
       title: 'Color de Fondo',
       initialOpen: true
@@ -178,16 +188,36 @@ registerBlockType('lapizzeria/boxes', {
     }, "Color de Fondo"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(ColorPalette, {
       onChange: onChangeColorFondo,
       value: colorFondo
+    })))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, {
+      title: 'Color de Texto',
+      initialOpen: true
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "components-base-control"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "components-base-control__field"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("label", {
+      className: "components-base-control__label"
+    }, "Color de Texto"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(ColorPalette, {
+      onChange: onChangeColorTexto,
+      value: colorTexto
     }))))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: "box",
       style: {
         backgroundColor: colorFondo
       }
-    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h2", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText, {
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h2", {
+      style: {
+        color: colorTexto
+      }
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText, {
       placeholder: "Agrega el encabezado",
       onChange: onChangeHeadingBox,
       value: headingBox
-    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText, {
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", {
+      style: {
+        color: colorTexto
+      }
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText, {
       placeholder: "Agrega el texto",
       onChange: onChangeTextBox,
       value: textBox
@@ -199,13 +229,18 @@ registerBlockType('lapizzeria/boxes', {
     var _props$attributes2 = props.attributes,
         headingBox = _props$attributes2.headingBox,
         textBox = _props$attributes2.textBox,
-        colorFondo = _props$attributes2.colorFondo;
+        colorFondo = _props$attributes2.colorFondo,
+        colorTexto = _props$attributes2.colorTexto;
     return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: "box",
       style: {
         backgroundColor: colorFondo
       }
-    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h2", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText.Content, {
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h2", {
+      style: {
+        color: colorTexto
+      }
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText.Content, {
       value: headingBox
     })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText.Content, {
       value: textBox

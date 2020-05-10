@@ -34,13 +34,16 @@ registerBlockType('lapizzeria/boxes', {
 		},
 		colorFondo:{
 			type:'string'
+		},
+		colorTexto:{
+			type:'string'
 		}
 	},
 	edit:(props)=>{
 
 		//console.log(props);
 		//extraer el componetido desde props
-		const { attributes: { headingBox, textBox, colorFondo }, setAttributes } = props;
+		const { attributes: { headingBox, textBox, colorFondo, colorTexto }, setAttributes } = props;
 
 		const onChangeHeadingBox = (nuevoHeading) =>{
 			setAttributes({ headingBox: nuevoHeading });
@@ -52,6 +55,10 @@ registerBlockType('lapizzeria/boxes', {
 
 		const onChangeColorFondo = (nuevoColor) =>{
 			setAttributes({ colorFondo: nuevoColor });
+		}
+
+		const onChangeColorTexto = (nuevoColor) =>{
+			setAttributes({ colorTexto: nuevoColor });
 		}
 
 
@@ -75,15 +82,32 @@ registerBlockType('lapizzeria/boxes', {
 							</div>
 						</div>
 					</PanelBody>
+					<PanelBody
+						title={'Color de Texto'}
+						initialOpen={true}
+					>
+						<div className="components-base-control">
+							<div className="components-base-control__field">
+								<label className="components-base-control__label">
+									Color de Texto
+								</label>
+								<ColorPalette
+									onChange={onChangeColorTexto}
+									value={colorTexto}
+								>
+								</ColorPalette>
+							</div>
+						</div>
+					</PanelBody>
 				</InspectorControls>
 				<div className="box" style={{ backgroundColor : colorFondo }}>
-					<h2>
+					<h2 style={{ color: colorTexto }}>
 						<RichText 
 							placeholder="Agrega el encabezado"
 							onChange={onChangeHeadingBox}
 							value={ headingBox }/>
 					</h2>
-					<p>
+					<p style={{ color: colorTexto }}>
 						<RichText placeholder="Agrega el texto"
 						onChange={onChangeTextBox}
 						value={textBox}/>
@@ -96,11 +120,11 @@ registerBlockType('lapizzeria/boxes', {
 
 		//console.log(props);
 		//extraer el componetido desde props
-		const { attributes: { headingBox, textBox, colorFondo } } = props;
+		const { attributes: { headingBox, textBox, colorFondo, colorTexto } } = props;
 
 		return (
 			<div className="box" style={{ backgroundColor : colorFondo }}>
-				<h2>
+				<h2 style={{ color: colorTexto }}>
 					<RichText.Content value={headingBox}/>
 				</h2>
 				<p>
