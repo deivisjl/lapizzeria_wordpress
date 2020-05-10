@@ -2,6 +2,44 @@
 
 function lapizzeria_setup(){
 
+	/* Gutenberg */
+
+	/* Soporte de estilos por default de gutenberg en el tema*/
+	add_theme_support('wp-block-styles');
+
+	//Paleta de colores
+	add_theme_support('editor-color-palette', array(
+		array(
+			'name'=>'Rojo',
+			'slug'=>'rojo',
+			'color'=>'#a61206'
+		),
+		array(
+			'name'=>'Naranja',
+			'slug'=>'naranja',
+			'color'=>'#F19F30'
+		),
+
+		array(
+			'name'=>'Verde',
+			'slug'=>'verde',
+			'color'=>'#127427'
+		),
+		array(
+			'name'=>'Blanco',
+			'slug'=>'blanco',
+			'color'=>'#fff'
+		),
+		array(
+			'name'=>'Negro',
+			'slug'=>'negro',
+			'color'=>'#000'
+		)
+	));
+
+	//deshabilita la personalizacion de colores en la paleta de gutenberg
+	add_theme_support('disable-custom-colors');
+
 	//habilitar imagenes destacadas
 	add_theme_support('post-thumbnails');
 
