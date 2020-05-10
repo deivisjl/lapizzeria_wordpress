@@ -31,13 +31,16 @@ registerBlockType('lapizzeria/boxes', {
 			type:'string',
 			source:'html',
 			selector:'.box p'
+		},
+		colorFondo:{
+			type:'string'
 		}
 	},
 	edit:(props)=>{
 
 		//console.log(props);
 		//extraer el componetido desde props
-		const { attributes: { headingBox, textBox }, setAttributes } = props;
+		const { attributes: { headingBox, textBox, colorFondo }, setAttributes } = props;
 
 		const onChangeHeadingBox = (nuevoHeading) =>{
 			setAttributes({ headingBox: nuevoHeading });
@@ -45,6 +48,10 @@ registerBlockType('lapizzeria/boxes', {
 
 		const onChangeTextBox = (nuevoTexto) =>{
 			setAttributes({ textBox: nuevoTexto });
+		}
+
+		const onChangeColorFondo = (nuevoColor) =>{
+			setAttributes({ colorFondo: nuevoColor });
 		}
 
 
@@ -60,12 +67,16 @@ registerBlockType('lapizzeria/boxes', {
 								<label className="components-base-control__label">
 									Color de Fondo
 								</label>
-								<ColorPalette></ColorPalette>
+								<ColorPalette
+									onChange={onChangeColorFondo}
+									value={colorFondo}
+								>
+								</ColorPalette>
 							</div>
 						</div>
 					</PanelBody>
 				</InspectorControls>
-				<div className="box">
+				<div className="box" style={{ backgroundColor : colorFondo }}>
 					<h2>
 						<RichText 
 							placeholder="Agrega el encabezado"
@@ -85,10 +96,10 @@ registerBlockType('lapizzeria/boxes', {
 
 		//console.log(props);
 		//extraer el componetido desde props
-		const { attributes: { headingBox, textBox } } = props;
+		const { attributes: { headingBox, textBox, colorFondo } } = props;
 
 		return (
-			<div className="box">
+			<div className="box" style={{ backgroundColor : colorFondo }}>
 				<h2>
 					<RichText.Content value={headingBox}/>
 				</h2>
