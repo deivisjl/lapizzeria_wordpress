@@ -1,5 +1,5 @@
 const { registerBlockType } = wp.blocks;
-const { RichText, InspectorControls, ColorPalette } = wp.editor;
+const { RichText, InspectorControls, ColorPalette, BlockControls, AlignmentToolbar} = wp.editor;
 const { PanelBody } = wp.components;
 
 //logo para el bloque
@@ -37,13 +37,18 @@ registerBlockType('lapizzeria/boxes', {
 		},
 		colorTexto:{
 			type:'string'
+		},
+		alineacionContenido:{
+			type:'string',
+			default:'center',
 		}
+
 	},
 	edit:(props)=>{
 
 		//console.log(props);
 		//extraer el componetido desde props
-		const { attributes: { headingBox, textBox, colorFondo, colorTexto }, setAttributes } = props;
+		const { attributes: { headingBox, textBox, colorFondo, colorTexto, alineacionContenido }, setAttributes } = props;
 
 		const onChangeHeadingBox = (nuevoHeading) =>{
 			setAttributes({ headingBox: nuevoHeading });
@@ -59,6 +64,10 @@ registerBlockType('lapizzeria/boxes', {
 
 		const onChangeColorTexto = (nuevoColor) =>{
 			setAttributes({ colorTexto: nuevoColor });
+		}
+
+		const onChangeAlinearContenido = (nuevaAlineacion) =>{
+			setAttributes({ alineacionContenido: nuevaAlineacion });
 		}
 
 
@@ -100,7 +109,12 @@ registerBlockType('lapizzeria/boxes', {
 						</div>
 					</PanelBody>
 				</InspectorControls>
-				<div className="box" style={{ backgroundColor : colorFondo }}>
+				<BlockControls>
+					<AlignmentToolbar 
+						onChange={onChangeAlinearContenido}
+					/>
+				</BlockControls>
+				<div className="box" style={{ backgroundColor : colorFondo, textAlign : alineacionContenido }}>
 					<h2 style={{ color: colorTexto }}>
 						<RichText 
 							placeholder="Agrega el encabezado"
@@ -120,10 +134,10 @@ registerBlockType('lapizzeria/boxes', {
 
 		//console.log(props);
 		//extraer el componetido desde props
-		const { attributes: { headingBox, textBox, colorFondo, colorTexto } } = props;
+		const { attributes: { headingBox, textBox, colorFondo, colorTexto, alineacionContenido } } = props;
 
 		return (
-			<div className="box" style={{ backgroundColor : colorFondo }}>
+			<div className="box" style={{ backgroundColor : colorFondo,  textAlign : alineacionContenido }}>
 				<h2 style={{ color: colorTexto }}>
 					<RichText.Content value={headingBox}/>
 				</h2>

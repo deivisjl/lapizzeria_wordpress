@@ -103,7 +103,9 @@ var registerBlockType = wp.blocks.registerBlockType;
 var _wp$editor = wp.editor,
     RichText = _wp$editor.RichText,
     InspectorControls = _wp$editor.InspectorControls,
-    ColorPalette = _wp$editor.ColorPalette;
+    ColorPalette = _wp$editor.ColorPalette,
+    BlockControls = _wp$editor.BlockControls,
+    AlignmentToolbar = _wp$editor.AlignmentToolbar;
 var PanelBody = wp.components.PanelBody; //logo para el bloque
 
 
@@ -140,6 +142,10 @@ registerBlockType('lapizzeria/boxes', {
     },
     colorTexto: {
       type: 'string'
+    },
+    alineacionContenido: {
+      type: 'string',
+      default: 'center'
     }
   },
   edit: function edit(props) {
@@ -150,6 +156,7 @@ registerBlockType('lapizzeria/boxes', {
         textBox = _props$attributes.textBox,
         colorFondo = _props$attributes.colorFondo,
         colorTexto = _props$attributes.colorTexto,
+        alineacionContenido = _props$attributes.alineacionContenido,
         setAttributes = props.setAttributes;
 
     var onChangeHeadingBox = function onChangeHeadingBox(nuevoHeading) {
@@ -173,6 +180,12 @@ registerBlockType('lapizzeria/boxes', {
     var onChangeColorTexto = function onChangeColorTexto(nuevoColor) {
       setAttributes({
         colorTexto: nuevoColor
+      });
+    };
+
+    var onChangeAlinearContenido = function onChangeAlinearContenido(nuevaAlineacion) {
+      setAttributes({
+        alineacionContenido: nuevaAlineacion
       });
     };
 
@@ -200,10 +213,13 @@ registerBlockType('lapizzeria/boxes', {
     }, "Color de Texto"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(ColorPalette, {
       onChange: onChangeColorTexto,
       value: colorTexto
-    }))))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+    }))))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(BlockControls, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(AlignmentToolbar, {
+      onChange: onChangeAlinearContenido
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: "box",
       style: {
-        backgroundColor: colorFondo
+        backgroundColor: colorFondo,
+        textAlign: alineacionContenido
       }
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h2", {
       style: {
@@ -230,11 +246,13 @@ registerBlockType('lapizzeria/boxes', {
         headingBox = _props$attributes2.headingBox,
         textBox = _props$attributes2.textBox,
         colorFondo = _props$attributes2.colorFondo,
-        colorTexto = _props$attributes2.colorTexto;
+        colorTexto = _props$attributes2.colorTexto,
+        alineacionContenido = _props$attributes2.alineacionContenido;
     return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: "box",
       style: {
-        backgroundColor: colorFondo
+        backgroundColor: colorFondo,
+        textAlign: alineacionContenido
       }
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h2", {
       style: {
