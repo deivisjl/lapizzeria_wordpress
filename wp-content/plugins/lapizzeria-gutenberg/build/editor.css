@@ -1,0 +1,13 @@
+.wp-block{
+	max-width: 1080px;
+}
+
+.block-editor-writing-flow{
+	padding-left: 3rem;
+}
+
+.box{
+	height: 240px;
+	text-align: center;
+	padding:4rem 2rem;
+}
