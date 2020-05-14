@@ -34,43 +34,43 @@ function lapizzeria_registrar_bloques(){
 		return;
 	}
 
-	//Registrar los bloques en el editor
-	wp_register_script(
-		'lapizzeria-editor-script', //nombre unico
-		plugins_url('build/index.js', __FILE__), //archivos con los bloques
-		array('wp-blocks','wp-i18n','wp-element','wp-editor'), //dependencias
-		filemtime(plugin_dir_path(__FILE__).'build/index.js') //ultima version
-	);
+	// Registrar los bloques en el editor
+    wp_register_script(
+        'lapizzeria-editor-script', // nombre unico
+        plugins_url( 'build/index.js', __FILE__), // archivo con los bloques
+        array('wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor'), // dependencias
+        filemtime( plugin_dir_path(__FILE__) . 'build/index.js') // versión
+    );
 
-	//estilos para el editor (unicamente en gutenberg)
-	wp_register_style(
-		'lapizzeria-editor-styles', //nombre
-		plugins_url('build/index.js', __FILE__), //archivos CSS con los bloques
-		array('wp-edit-blocks'),
-		filemtime(plugin_dir_path(__FILE__). 'build/editor.css')
-	);
+    // Estilos para el editor (unicamente)
+    wp_register_style(
+        'lapizzeria-editor-styles', // nombre
+        plugins_url( 'build/editor.css', __FILE__), // archivo css para el editor
+        array('wp-edit-blocks'), // dependencias
+        filemtime( plugin_dir_path(__FILE__) . 'build/editor.css')
+    );
 
-	//estilos para los bloques (backend y fronted)
-	wp_register_style(
-		'lapizzeria-fronted-styles', //nombre
-		plugins_url('build/index.js', __FILE__), //archivos CSS con los bloques
-		array(),
-		filemtime(plugin_dir_path(__FILE__). 'build/styles.css')
-	);
+    // Estilos para los bloques (backend y front end)
+    wp_register_style(
+        'lapizzeria-frontend-styles', // nombre
+        plugins_url( 'build/styles.css', __FILE__), // archivo css para el editor
+        array(), // dependencias
+        filemtime( plugin_dir_path(__FILE__) . 'build/styles.css')
+    );
 
 	//Arreglo de bloques
 	$blocks = [
 		'lapizzeria/boxes'
 	];
 
-	//Recorrer bloques y agregar scripts y styles
-	foreach ($blocks as $block) {
-		register_block_type($block, array(
-			'editor_script' => 'lapizzeria-editor-script', //script principal
-			'editor_style' => 'lapizzeria-editor-styles', //estilos para el editor
-			'style' => 'lapizzeria-fronted-styles' //estilos para el frontend
-		));
-	}
+	// Recorrer bloques y agregar scripts y styles
+    foreach($blocks as $block) {
+        register_block_type($block, array(
+            'editor_script' => 'lapizzeria-editor-script', // script principal para editor
+            'editor_style' => 'lapizzeria-editor-styles', // estilos para el editor
+            'style' => 'lapizzeria-frontend-styles' // estilos para el front end
+        ));
+    }
 }
 
 add_action('init','lapizzeria_registrar_bloques');

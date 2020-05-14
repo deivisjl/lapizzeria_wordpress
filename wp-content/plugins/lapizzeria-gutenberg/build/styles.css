@@ -13,3 +13,53 @@
 
 	--contenedor: 1200px;
 }
+
+.cajas-nosotros{
+	display: grid;
+}
+
+@media(min-width: 768px){
+	.cajas-nosotros{
+		grid-template-columns: repeat(auto-fit,minmax(100px, 1fr));
+		min-height: 48rem;
+	}
+}
+
+.cajas-nosotros .wp-block-column{
+	display: grid;
+	grid-template-rows: repeat(auto-fit,minmax(100px, 1fr));
+	margin:0!important;
+}
+
+.wp-block-lapizzeria-boxes{
+	height: 24rem;
+	padding: 4rem 2rem;
+	display: grid;
+	align-items: center;
+}
+
+.wp-block-lapizzeria-boxes h2{
+	font-size: 2rem;
+	margin:0;
+	line-height: 1;
+	font-weight: 700;
+}
+
+.wp-block-lapizzeria-boxes p{
+	font-size: 1.4rem;
+	line-height: 1.5;
+}
+
+/* Cajas nosotros */
+.cajas-nosotros .wp-block-image{
+	margin:0;
+	overflow: hidden;
+	height: 24rem;
+}
+
+.cajas-nosotros img{
+	display: block;
+	object-fit: cover;
+	height: 30rem;
+	width: 100%;
+}

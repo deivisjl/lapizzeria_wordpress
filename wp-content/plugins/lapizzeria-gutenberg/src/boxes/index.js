@@ -127,7 +127,7 @@ registerBlockType('lapizzeria/boxes', {
 				<h2 style={{ color: colorTexto }}>
 					<RichText.Content value={headingBox}/>
 				</h2>
-				<p>
+				<p style={{ color: colorTexto }}>
 					<RichText.Content value={textBox}/>
 				</p>
 			</div>
