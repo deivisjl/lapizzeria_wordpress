@@ -46,7 +46,9 @@ function lapizzeria_especialidades() {
 		'hierarchical'       => false,
 		'menu_position'      => 6,
 		'supports'           => array( 'title', 'editor', 'thumbnail' ),
-		'taxonomies'         =>  array('categoria-menu')
+		'taxonomies'         =>  array('categoria-menu'),
+		'show_in_rest'       => true,
+		'rest_base'			 => 'especialidades-api'
 	);
 
 	register_post_type( 'especialidades', $args );
