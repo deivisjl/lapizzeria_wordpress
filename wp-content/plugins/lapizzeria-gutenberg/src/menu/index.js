@@ -10,21 +10,32 @@ registerBlockType('lapizzeria/menu',{
 	title:'La Pizzeria Menu',
 	icon: { src: Logo },
 	category: 'lapizzeria',
-	edit: withSelect((select) =>{
+	attributes:{
+		cantidadMostrar:{
+			type:'number',
+			default:4
+		}
+	},
+	edit: withSelect((select, props) =>{
+
+		const { attributes: { cantidadMostrar }, setAttributes } = props;
 
 		const onChangeCantidadMostrar = nuevaCantidad => {
-
+			setAttributes({ cantidadMostrar : parseInt(nuevaCantidad) })
 		}
 
 		return {
 			//enviar una peticion a la API
-			especialidades: select("core").getEntityRecords('postType','especialidades'),
-			onChangeCantidadMostrar
+			especialidades: select("core").getEntityRecords('postType','especialidades',{
+				per_page: cantidadMostrar
+			}),
+			onChangeCantidadMostrar,
+			props
 			//especialidades declarada en el postType
 		};
 	})
 
-	(({especialidades, onChangeCantidadMostrar})=>{
+	(({especialidades, onChangeCantidadMostrar, props})=>{
 
 		// Verificar especialidades
         if(!especialidades) {
@@ -35,6 +46,8 @@ registerBlockType('lapizzeria/menu',{
         if(especialidades && especialidades.length === 0) {
             return 'No hay resultados';
         }
+
+        const { attributes: { cantidadMostrar } } = props;
 
 		return (
 				<>
@@ -52,6 +65,7 @@ registerBlockType('lapizzeria/menu',{
 									onChange={onChangeCantidadMostrar}
 									min={1}
 									max={10}
+									value={cantidadMostrar}
 								/>
 							</div>
 						</div>

@@ -317,18 +317,35 @@ registerBlockType('lapizzeria/menu', {
     src: _pizzeria_icon_svg__WEBPACK_IMPORTED_MODULE_1__["ReactComponent"]
   },
   category: 'lapizzeria',
-  edit: withSelect(function (select) {
-    var onChangeCantidadMostrar = function onChangeCantidadMostrar(nuevaCantidad) {};
+  attributes: {
+    cantidadMostrar: {
+      type: 'number',
+      default: 4
+    }
+  },
+  edit: withSelect(function (select, props) {
+    var cantidadMostrar = props.attributes.cantidadMostrar,
+        setAttributes = props.setAttributes;
+
+    var onChangeCantidadMostrar = function onChangeCantidadMostrar(nuevaCantidad) {
+      setAttributes({
+        cantidadMostrar: parseInt(nuevaCantidad)
+      });
+    };
 
     return {
       //enviar una peticion a la API
-      especialidades: select("core").getEntityRecords('postType', 'especialidades'),
-      onChangeCantidadMostrar: onChangeCantidadMostrar //especialidades declarada en el postType
+      especialidades: select("core").getEntityRecords('postType', 'especialidades', {
+        per_page: cantidadMostrar
+      }),
+      onChangeCantidadMostrar: onChangeCantidadMostrar,
+      props: props //especialidades declarada en el postType
 
     };
   })(function (_ref) {
     var especialidades = _ref.especialidades,
-        onChangeCantidadMostrar = _ref.onChangeCantidadMostrar;
+        onChangeCantidadMostrar = _ref.onChangeCantidadMostrar,
+        props = _ref.props;
 
     // Verificar especialidades
     if (!especialidades) {
@@ -340,6 +357,7 @@ registerBlockType('lapizzeria/menu', {
       return 'No hay resultados';
     }
 
+    var cantidadMostrar = props.attributes.cantidadMostrar;
     return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(InspectorControls, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, {
       title: 'Cantidad a Mostrar',
       initialOpen: true
@@ -352,7 +370,8 @@ registerBlockType('lapizzeria/menu', {
     }, "Cantidad a Mostrar"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RangeControl, {
       onChange: onChangeCantidadMostrar,
       min: 1,
-      max: 10
+      max: 10,
+      value: cantidadMostrar
     })))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, {
       title: 'Color de Texto',
       initialOpen: true
