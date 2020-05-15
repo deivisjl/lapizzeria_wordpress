@@ -1,6 +1,7 @@
 const { registerBlockType } = wp.blocks;
 const { withSelect } = wp.data;
-const { RichText } = wp.editor;
+const { RichText, InspectorControls } = wp.editor;
+const { PanelBody, RangeControl } = wp.components;
 
 /*Logo para el bloque*/
 import { ReactComponent as Logo } from '../pizzeria-icon.svg';
@@ -11,21 +12,68 @@ registerBlockType('lapizzeria/menu',{
 	category: 'lapizzeria',
 	edit: withSelect((select) =>{
 
+		const onChangeCantidadMostrar = nuevaCantidad => {
+
+		}
+
 		return {
 			//enviar una peticion a la API
-			especialidades: select("core").getEntityRecords('postType','especialidades')//especialidades declarada en el postType
+			especialidades: select("core").getEntityRecords('postType','especialidades'),
+			onChangeCantidadMostrar
+			//especialidades declarada en el postType
 		};
 	})
 
-	(({especialidades})=>{
-		console.log(especialidades)
+	(({especialidades, onChangeCantidadMostrar})=>{
+
+		// Verificar especialidades
+        if(!especialidades) {
+            return 'Cargando...';
+        }
+
+        // Si no hay especialidades
+        if(especialidades && especialidades.length === 0) {
+            return 'No hay resultados';
+        }
+
 		return (
-			<>
+				<>
+				<InspectorControls>
+					<PanelBody
+						title={'Cantidad a Mostrar'}
+						initialOpen={true}
+					>
+						<div className="components-base-control">
+							<div className="components-base-control__field">
+								<label className="components-base-control__label">
+									Cantidad a Mostrar
+								</label>
+								<RangeControl
+									onChange={onChangeCantidadMostrar}
+									min={1}
+									max={10}
+								/>
+							</div>
+						</div>
+					</PanelBody>
+					<PanelBody
+						title={'Color de Texto'}
+						initialOpen={true}
+					>
+						<div className="components-base-control">
+							<div className="components-base-control__field">
+								<label className="components-base-control__label">
+									Color de Texto
+								</label>
+							</div>
+						</div>
+					</PanelBody>
+				</InspectorControls>
 				<h2>Nuestras Especialidades</h2>
 				<ul className="nuestro-menu">
-					{especialidades.map(especialidad => (
+					{especialidades.map(especialidad=>(
 						<li>
-							<img src="{especialidad.imagen_destacada}" alt="" />							
+							<img src={especialidad.imagen_destacada} />							
 							<div className="platillo">
 								<div className="precio-titulo">
 									<h3>{especialidad.title.rendered}</h3>
@@ -40,7 +88,7 @@ registerBlockType('lapizzeria/menu',{
 						</li>
 					))}
 				</ul>
-			</>
+				</>
 		)
 	}),
 	save:()=>{
