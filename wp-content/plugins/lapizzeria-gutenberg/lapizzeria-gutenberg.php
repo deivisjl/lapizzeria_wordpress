@@ -98,7 +98,7 @@ function lapizzeria_especialidades_front_end(){
     }
 
     $cuerpo = '';
-    $cuerpo .='<h2>Nuestras especialidades</h2>';
+    $cuerpo .='<h2 class="titulo-menu">Nuestras especialidades</h2>';
     $cuerpo .='<ul class="nuestro-menu">';
 
     foreach($especialidades as $esp):
@@ -107,18 +107,16 @@ function lapizzeria_especialidades_front_end(){
         setup_postdata($post);
         $cuerpo .= sprintf(
             '<li>
-                <li>
-                    %1$s
-                    <div class="platillo">
-                        <div class="precio-titulo">
-                            <h3>%2$s</h3>
-                            <p>$ %3$s</p>
-                        </div>
-                        <div class="contenido-platillo">
-                            <p>%4$s</p>
-                        </div>
+                %1$s
+                <div class="platillo">
+                    <div class="precio-titulo">
+                        <h3>%2$s</h3>
+                        <p>$ %3$s</p>
                     </div>
-                </li>
+                    <div class="contenido-platillo">
+                        <p>%4$s</p>
+                    </div>
+                </div>
             </li>',
             get_the_post_thumbnail($post, 'especialidades'),
             get_the_title($post),

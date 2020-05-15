@@ -83,7 +83,7 @@ registerBlockType('lapizzeria/menu',{
 						</div>
 					</PanelBody>
 				</InspectorControls>
-				<h2>Nuestras Especialidades</h2>
+				<h2 className="titulo-menu">Nuestras Especialidades</h2>
 				<ul className="nuestro-menu">
 					{especialidades.map(especialidad=>(
 						<li>

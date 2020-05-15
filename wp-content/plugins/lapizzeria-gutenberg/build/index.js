@@ -381,7 +381,9 @@ registerBlockType('lapizzeria/menu', {
       className: "components-base-control__field"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("label", {
       className: "components-base-control__label"
-    }, "Color de Texto"))))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h2", null, "Nuestras Especialidades"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("ul", {
+    }, "Color de Texto"))))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h2", {
+      className: "titulo-menu"
+    }, "Nuestras Especialidades"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("ul", {
       className: "nuestro-menu"
     }, especialidades.map(function (especialidad) {
       return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("li", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("img", {
