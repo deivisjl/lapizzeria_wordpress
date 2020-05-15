@@ -282,7 +282,36 @@ registerBlockType('lapizzeria/boxes', {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _boxes__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./boxes */ "./src/boxes/index.js");
+/* harmony import */ var _menu__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./menu */ "./src/menu/index.js");
 
+
+
+/***/ }),
+
+/***/ "./src/menu/index.js":
+/*!***************************!*\
+  !*** ./src/menu/index.js ***!
+  \***************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _pizzeria_icon_svg__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../pizzeria-icon.svg */ "./src/pizzeria-icon.svg");
+var registerBlockType = wp.blocks.registerBlockType;
+var withSelect = wp.data.withSelect;
+/*Logo para el bloque*/
+
+
+registerBlockType('lapizzeria/menu', {
+  title: 'La Pizzeria Menu',
+  icon: {
+    src: _pizzeria_icon_svg__WEBPACK_IMPORTED_MODULE_0__["ReactComponent"]
+  },
+  category: 'lapizzeria',
+  edit: function edit() {},
+  save: function save() {}
+});
 
 /***/ }),
 
