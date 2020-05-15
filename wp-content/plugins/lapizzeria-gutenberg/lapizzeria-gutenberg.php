@@ -72,18 +72,18 @@ function lapizzeria_registrar_bloques(){
         ));
     }
 
-    /* Registrar un bloque dinamico */
-    register_block_type('lapizzeriz/menu', array(
-            'editor_script' => 'lapizzeria-editor-script', // script principal para editor
-            'editor_style' => 'lapizzeria-editor-styles', // estilos para el editor
-            'style' => 'lapizzeria-frontend-styles' // estilos para el front end
-            'render_callback' => 'lapizzeria_especialidades_front_end'
-        ));
+    /** Registar un bloque dinamico */
+    register_block_type( 'lapizzeria/menu', array(
+        'editor_script' => 'lapizzeria-editor-script', // script principal para editor
+        'editor_style' => 'lapizzeria-editor-styles', // estilos para el editor
+        'style' => 'lapizzeria-frontend-styles', // estilos para el front end
+        'render_callback' => 'lapizzeria_especialidades_front_end' // Query a la base de datos
+    ) );
 }
 
 add_action('init','lapizzeria_registrar_bloques');
 
 /* Consulta a la base de datos para mostrar los resultados en el frontend*/
 function lapizzeria_especialidades_front_end(){
-    return; 
+    return 'en el frontend'; 
 }

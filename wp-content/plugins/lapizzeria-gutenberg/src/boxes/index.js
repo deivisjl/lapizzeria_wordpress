@@ -132,8 +132,7 @@ registerBlockType('lapizzeria/boxes', {
 	},
 	save:(props)=>{
 
-		//console.log(props);
-		//extraer el componetido desde props
+		//extraer el componente desde props
 		const { attributes: { headingBox, textBox, colorFondo, colorTexto, alineacionContenido } } = props;
 
 		return (

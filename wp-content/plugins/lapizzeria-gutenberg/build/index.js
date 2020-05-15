@@ -240,8 +240,7 @@ registerBlockType('lapizzeria/boxes', {
     }))));
   },
   save: function save(props) {
-    //console.log(props);
-    //extraer el componetido desde props
+    //extraer el componente desde props
     var _props$attributes2 = props.attributes,
         headingBox = _props$attributes2.headingBox,
         textBox = _props$attributes2.textBox,
@@ -297,7 +296,10 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _pizzeria_icon_svg__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../pizzeria-icon.svg */ "./src/pizzeria-icon.svg");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _pizzeria_icon_svg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../pizzeria-icon.svg */ "./src/pizzeria-icon.svg");
+
 var registerBlockType = wp.blocks.registerBlockType;
 var withSelect = wp.data.withSelect;
 /*Logo para el bloque*/
@@ -306,11 +308,23 @@ var withSelect = wp.data.withSelect;
 registerBlockType('lapizzeria/menu', {
   title: 'La Pizzeria Menu',
   icon: {
-    src: _pizzeria_icon_svg__WEBPACK_IMPORTED_MODULE_0__["ReactComponent"]
+    src: _pizzeria_icon_svg__WEBPACK_IMPORTED_MODULE_1__["ReactComponent"]
   },
   category: 'lapizzeria',
-  edit: function edit() {},
-  save: function save() {}
+  edit: withSelect(function (select) {
+    return {
+      //enviar una peticion a la API
+      especialidades: select("core").getEntityRecords('postType', 'especialidades') //especialidades declarada en el postType
+
+    };
+  })(function (_ref) {
+    var especialidades = _ref.especialidades;
+    console.log(especialidades);
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h1", null, "En el editor");
+  }),
+  save: function save() {
+    return null;
+  }
 });
 
 /***/ }),
