@@ -100,6 +100,14 @@ function lapizzeria_agregar_campos_rest_api(){
 							 	'schema' => null
 							 	//'update_callback' => 'lapizzeria_fijar_precio'
 							 ));
+
+	register_rest_field('especialidades',
+							'categoria_menu',
+							 array(
+							 	'get_callback' => 'lapizzeria_taxonomia_menu',
+							 	'update_callback' => null,
+							 	'schema' => null
+							 ));
 }
 
 add_action('rest_api_init','lapizzeria_agregar_campos_rest_api');
@@ -113,4 +121,10 @@ function lapizzeria_obtener_precio(){
 	}
 
 	return false;
+}
+
+function lapizzeria_taxonomia_menu(){
+	global $post;
+
+	return get_object_taxonomies($post);
 }
