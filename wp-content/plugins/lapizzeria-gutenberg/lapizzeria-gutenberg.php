@@ -107,9 +107,23 @@ function lapizzeria_especialidades_front_end(){
         setup_postdata($post);
         $cuerpo .= sprintf(
             '<li>
-                <h3>%1$s</h3>
+                <li>
+                    %1$s
+                    <div class="platillo">
+                        <div class="precio-titulo">
+                            <h3>%2$s</h3>
+                            <p>$ %3$s</p>
+                        </div>
+                        <div class="contenido-platillo">
+                            <p>%4$s</p>
+                        </div>
+                    </div>
+                </li>
             </li>',
-            get_the_title($post)
+            get_the_post_thumbnail($post, 'especialidades'),
+            get_the_title($post),
+            get_field('precio', $post),
+            get_the_content($post)
         );
 
         wp_reset_postdata();
