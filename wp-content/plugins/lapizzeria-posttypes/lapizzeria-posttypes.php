@@ -87,3 +87,30 @@ function lapizzeria_menu_taxonomia() {
 }
 
 add_action( 'init', 'lapizzeria_menu_taxonomia', 0 );
+
+/* Agregar campos a la respuesta de la RestAPI*/
+
+function lapizzeria_agregar_campos_rest_api(){
+
+	register_rest_field('especialidades',
+							'precio',
+							 array(
+							 	'get_callback' => 'lapizzeria_obtener_precio',
+							 	'update_callback' => null,
+							 	'schema' => null
+							 	//'update_callback' => 'lapizzeria_fijar_precio'
+							 ));
+}
+
+add_action('rest_api_init','lapizzeria_agregar_campos_rest_api');
+
+function lapizzeria_obtener_precio(){
+	if(!function_exists('get_field')){
+		return;
+	}
+	if(get_field('precio')){
+		return get_field('precio');
+	}
+
+	return false;
+}
