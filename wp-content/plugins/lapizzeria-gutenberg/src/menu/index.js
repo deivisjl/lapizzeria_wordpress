@@ -13,7 +13,7 @@ registerBlockType('lapizzeria/menu',{
 	attributes:{
 		cantidadMostrar:{
 			type:'number',
-			default:4
+			//default:4
 		}
 	},
 	edit: withSelect((select, props) =>{
@@ -27,7 +27,7 @@ registerBlockType('lapizzeria/menu',{
 		return {
 			//enviar una peticion a la API
 			especialidades: select("core").getEntityRecords('postType','especialidades',{
-				per_page: cantidadMostrar
+				per_page: cantidadMostrar || 4
 			}),
 			onChangeCantidadMostrar,
 			props
@@ -65,7 +65,7 @@ registerBlockType('lapizzeria/menu',{
 									onChange={onChangeCantidadMostrar}
 									min={1}
 									max={10}
-									value={cantidadMostrar}
+									value={cantidadMostrar || 4}
 								/>
 							</div>
 						</div>

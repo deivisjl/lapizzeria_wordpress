@@ -84,12 +84,13 @@ function lapizzeria_registrar_bloques(){
 add_action('init','lapizzeria_registrar_bloques');
 
 /* Consulta a la base de datos para mostrar los resultados en el frontend*/
-function lapizzeria_especialidades_front_end(){
+function lapizzeria_especialidades_front_end($atts){
+
     //obtener los datos del query
     $especialidades = wp_get_recent_posts(array(
         'post_type' => 'especialidades',
         'post_status' => 'publish',
-        'numberposts' => 10
+        'numberposts' => $atts['cantidadMostrar']
     ));
 
     //Revisar que haya resultados

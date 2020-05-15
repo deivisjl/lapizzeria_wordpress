@@ -319,8 +319,8 @@ registerBlockType('lapizzeria/menu', {
   category: 'lapizzeria',
   attributes: {
     cantidadMostrar: {
-      type: 'number',
-      default: 4
+      type: 'number' //default:4
+
     }
   },
   edit: withSelect(function (select, props) {
@@ -336,7 +336,7 @@ registerBlockType('lapizzeria/menu', {
     return {
       //enviar una peticion a la API
       especialidades: select("core").getEntityRecords('postType', 'especialidades', {
-        per_page: cantidadMostrar
+        per_page: cantidadMostrar || 4
       }),
       onChangeCantidadMostrar: onChangeCantidadMostrar,
       props: props //especialidades declarada en el postType
@@ -371,7 +371,7 @@ registerBlockType('lapizzeria/menu', {
       onChange: onChangeCantidadMostrar,
       min: 1,
       max: 10,
-      value: cantidadMostrar
+      value: cantidadMostrar || 4
     })))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, {
       title: 'Color de Texto',
       initialOpen: true
