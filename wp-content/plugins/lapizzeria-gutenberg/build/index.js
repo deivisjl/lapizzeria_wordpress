@@ -302,6 +302,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var registerBlockType = wp.blocks.registerBlockType;
 var withSelect = wp.data.withSelect;
+var RichText = wp.editor.RichText;
 /*Logo para el bloque*/
 
 
@@ -323,7 +324,18 @@ registerBlockType('lapizzeria/menu', {
     return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h2", null, "Nuestras Especialidades"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("ul", {
       className: "nuestro-menu"
     }, especialidades.map(function (especialidad) {
-      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("li", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h3", null, especialidad.title.rendered));
+      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("li", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("img", {
+        src: "{especialidad.imagen_destacada}",
+        alt: ""
+      }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+        className: "platillo"
+      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+        className: "precio-titulo"
+      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h3", null, especialidad.title.rendered), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, "$ ", especialidad.precio)), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+        className: "contenido-platillo"
+      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText, {
+        value: especialidad.content.rendered.substring(0, 180)
+      })))));
     })));
   }),
   save: function save() {
