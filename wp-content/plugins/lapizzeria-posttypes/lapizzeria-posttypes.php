@@ -108,6 +108,14 @@ function lapizzeria_agregar_campos_rest_api(){
 							 	'update_callback' => null,
 							 	'schema' => null
 							 ));
+
+	register_rest_field( 'especialidades', 
+				        'imagen_destacada', 
+					        array(
+					            'get_callback' => 'lapizzeria_obtener_imagen_destacada',
+					            'update_callback' => null,
+					            'schema' => null
+					        ));
 }
 
 add_action('rest_api_init','lapizzeria_agregar_campos_rest_api');
@@ -127,4 +135,12 @@ function lapizzeria_taxonomia_menu(){
 	global $post;
 
 	return get_object_taxonomies($post);
+}
+
+function lapizzeria_obtener_imagen_destacada($object, $field_name, $request) {
+    if($object['featured_media']) {
+        $imagen = wp_get_attachment_image_src( $object['featured_media'], 'especialidades' );
+        return $imagen[0];
+    }
+    return false;
 }
