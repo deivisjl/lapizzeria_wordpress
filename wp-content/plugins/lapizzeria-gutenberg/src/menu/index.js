@@ -1,7 +1,7 @@
 const { registerBlockType } = wp.blocks;
 const { withSelect } = wp.data;
 const { RichText, InspectorControls } = wp.editor;
-const { PanelBody, RangeControl } = wp.components;
+const { PanelBody, RangeControl, SelectControl } = wp.components;
 
 /*Logo para el bloque*/
 import { ReactComponent as Logo } from '../pizzeria-icon.svg';
@@ -25,6 +25,7 @@ registerBlockType('lapizzeria/menu',{
 		}
 
 		return {
+			categorias: select("core").getEntityRecords('taxonomy','categoria-menu'),
 			//enviar una peticion a la API
 			especialidades: select("core").getEntityRecords('postType','especialidades',{
 				per_page: cantidadMostrar || 4
@@ -35,7 +36,7 @@ registerBlockType('lapizzeria/menu',{
 		};
 	})
 
-	(({especialidades, onChangeCantidadMostrar, props})=>{
+	(({categorias, especialidades, onChangeCantidadMostrar, props})=>{
 
 		// Verificar especialidades
         if(!especialidades) {
@@ -46,6 +47,21 @@ registerBlockType('lapizzeria/menu',{
         if(especialidades && especialidades.length === 0) {
             return 'No hay resultados';
         }
+
+        //Verificar categorias
+        if(!categorias){
+        	return 'Cargando...';
+        }
+        if(categorias && categorias.length === 0)
+        {
+        	return 'No hay resultados';
+        }
+
+        //Generar label y values a categorias
+        categorias.forEach(categoria => {
+        	categoria['label'] = categoria.name;
+        	categoria['value'] = categoria.id;
+        })	
 
         const { attributes: { cantidadMostrar } } = props;
 
@@ -71,17 +87,21 @@ registerBlockType('lapizzeria/menu',{
 						</div>
 					</PanelBody>
 					<PanelBody
-						title={'Color de Texto'}
-						initialOpen={true}
+						title={'Categoría de especialidad'}
+						initialOpen={false}
 					>
 						<div className="components-base-control">
 							<div className="components-base-control__field">
 								<label className="components-base-control__label">
-									Color de Texto
+									Categoría de especialidad
 								</label>
+								<SelectControl
+									options={categorias}
+								/>
 							</div>
 						</div>
 					</PanelBody>
+
 				</InspectorControls>
 				<h2 className="titulo-menu">Nuestras Especialidades</h2>
 				<ul className="nuestro-menu">
