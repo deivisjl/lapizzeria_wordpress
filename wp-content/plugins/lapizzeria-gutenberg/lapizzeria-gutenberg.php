@@ -90,7 +90,13 @@ function lapizzeria_especialidades_front_end($atts){
     $especialidades = wp_get_recent_posts(array(
         'post_type' => 'especialidades',
         'post_status' => 'publish',
-        'numberposts' => $atts['cantidadMostrar']
+        'numberposts' => $atts['cantidadMostrar'],
+        'tax_query' => array(
+            array(
+                    'taxonomy' => 'categoria-menu',
+                    'terms' => $atts['categoriaMenu'],
+                    'field' => 'term_id'
+                ))
     ));
 
     //Revisar que haya resultados
@@ -99,7 +105,9 @@ function lapizzeria_especialidades_front_end($atts){
     }
 
     $cuerpo = '';
-    $cuerpo .='<h2 class="titulo-menu">Nuestras especialidades</h2>';
+    $cuerpo .='<h2 class="titulo-menu">';
+    $cuerpo .=$atts['tituloBloque'];
+    $cuerpo .='</h2>';
     $cuerpo .='<ul class="nuestro-menu">';
 
     foreach($especialidades as $esp):
