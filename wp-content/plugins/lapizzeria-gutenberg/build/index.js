@@ -424,7 +424,8 @@ var _wp$editor = wp.editor,
 var _wp$components = wp.components,
     PanelBody = _wp$components.PanelBody,
     RangeControl = _wp$components.RangeControl,
-    SelectControl = _wp$components.SelectControl;
+    SelectControl = _wp$components.SelectControl,
+    TextControl = _wp$components.TextControl;
 /*Logo para el bloque*/
 
 
@@ -441,6 +442,10 @@ registerBlockType('lapizzeria/menu', {
     },
     categoriaMenu: {
       type: 'number'
+    },
+    tituloBloque: {
+      type: 'string',
+      default: 'Título Bloque'
     }
   },
   edit: withSelect(function (select, props) {
@@ -461,6 +466,12 @@ registerBlockType('lapizzeria/menu', {
       });
     };
 
+    var onChangeTituloBloque = function onChangeTituloBloque(nuevoTitulo) {
+      setAttributes({
+        tituloBloque: nuevoTitulo
+      });
+    };
+
     return {
       categorias: select("core").getEntityRecords('taxonomy', 'categoria-menu'),
       //enviar una peticion a la API
@@ -470,6 +481,7 @@ registerBlockType('lapizzeria/menu', {
       }),
       onChangeCantidadMostrar: onChangeCantidadMostrar,
       onChangeCategoriaMenu: onChangeCategoriaMenu,
+      onChangeTituloBloque: onChangeTituloBloque,
       props: props //especialidades declarada en el postType
 
     };
@@ -478,6 +490,7 @@ registerBlockType('lapizzeria/menu', {
         especialidades = _ref.especialidades,
         onChangeCantidadMostrar = _ref.onChangeCantidadMostrar,
         onChangeCategoriaMenu = _ref.onChangeCategoriaMenu,
+        onChangeTituloBloque = _ref.onChangeTituloBloque,
         props = _ref.props;
 
     // Verificar especialidades
@@ -513,7 +526,8 @@ registerBlockType('lapizzeria/menu', {
     var listadoCategorias = [].concat(opcionDefault, _babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0___default()(categorias));
     var _props$attributes2 = props.attributes,
         cantidadMostrar = _props$attributes2.cantidadMostrar,
-        categoriaMenu = _props$attributes2.categoriaMenu;
+        categoriaMenu = _props$attributes2.categoriaMenu,
+        tituloBloque = _props$attributes2.tituloBloque;
     return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(InspectorControls, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(PanelBody, {
       title: 'Cantidad a Mostrar',
       initialOpen: true
@@ -541,9 +555,21 @@ registerBlockType('lapizzeria/menu', {
       options: listadoCategorias,
       onChange: onChangeCategoriaMenu,
       value: categoriaMenu
+    })))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(PanelBody, {
+      title: 'Título bloque',
+      initialOpen: false
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", {
+      className: "components-base-control"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", {
+      className: "components-base-control__field"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("label", {
+      className: "components-base-control__label"
+    }, "T\xEDtulo bloque"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(TextControl, {
+      onChange: onChangeTituloBloque,
+      value: tituloBloque
     }))))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("h2", {
       className: "titulo-menu"
-    }, "Nuestras Especialidades"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("ul", {
+    }, tituloBloque), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("ul", {
       className: "nuestro-menu"
     }, especialidades.map(function (especialidad) {
       return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("li", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("img", {

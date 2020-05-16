@@ -1,7 +1,7 @@
 const { registerBlockType } = wp.blocks;
 const { withSelect } = wp.data;
 const { RichText, InspectorControls } = wp.editor;
-const { PanelBody, RangeControl, SelectControl } = wp.components;
+const { PanelBody, RangeControl, SelectControl, TextControl } = wp.components;
 
 /*Logo para el bloque*/
 import { ReactComponent as Logo } from '../pizzeria-icon.svg';
@@ -18,6 +18,10 @@ registerBlockType('lapizzeria/menu',{
 		categoriaMenu:{
 			type:'number',
 		},
+		tituloBloque:{
+			type:'string',
+			default:'Título Bloque'
+		}
 	},
 	edit: withSelect((select, props) =>{
 
@@ -31,6 +35,10 @@ registerBlockType('lapizzeria/menu',{
 			setAttributes({ categoriaMenu: nuevaCategoria})
 		}
 
+		const onChangeTituloBloque = nuevoTitulo =>{
+			setAttributes({ tituloBloque: nuevoTitulo})
+		}
+
 		return {
 			categorias: select("core").getEntityRecords('taxonomy','categoria-menu'),
 			//enviar una peticion a la API
@@ -40,12 +48,13 @@ registerBlockType('lapizzeria/menu',{
 			}),
 			onChangeCantidadMostrar,
 			onChangeCategoriaMenu,
+			onChangeTituloBloque,
 			props
 			//especialidades declarada en el postType
 		};
 	})
 
-	(({categorias, especialidades, onChangeCantidadMostrar,onChangeCategoriaMenu, props})=>{
+	(({categorias, especialidades, onChangeCantidadMostrar,onChangeCategoriaMenu,onChangeTituloBloque, props})=>{
 
 		// Verificar especialidades
         if(!especialidades) {
@@ -77,7 +86,7 @@ registerBlockType('lapizzeria/menu',{
 
         const listadoCategorias = [...opcionDefault,...categorias];
 
-        const { attributes: { cantidadMostrar, categoriaMenu } } = props;
+        const { attributes: { cantidadMostrar, categoriaMenu, tituloBloque } } = props;
 
 		return (
 				<>
@@ -117,9 +126,25 @@ registerBlockType('lapizzeria/menu',{
 							</div>
 						</div>
 					</PanelBody>
+					<PanelBody
+						title={'Título bloque'}
+						initialOpen={false}
+					>
+						<div className="components-base-control">
+							<div className="components-base-control__field">
+								<label className="components-base-control__label">
+									Título bloque
+								</label>
+								<TextControl
+									onChange={onChangeTituloBloque}
+									value={tituloBloque}
+								/>
+							</div>
+						</div>
+					</PanelBody>
 
 				</InspectorControls>
-				<h2 className="titulo-menu">Nuestras Especialidades</h2>
+				<h2 className="titulo-menu">{tituloBloque}</h2>
 				<ul className="nuestro-menu">
 					{especialidades.map(especialidad=>(
 						<li>
