@@ -86,17 +86,26 @@ add_action('init','lapizzeria_registrar_bloques');
 /* Consulta a la base de datos para mostrar los resultados en el frontend*/
 function lapizzeria_especialidades_front_end($atts){
 
+    //Extraer los valores y agregar defaults
+    $cantidad = $atts['cantidadMostrar'] ? $atts['cantidadMostrar'] : 4;
+    $titulo_bloque = $atts['tituloBloque'] ? $atts['tituloBloque'] : 'Nuestras Especialidades';
+
+    $tax_query = array();
+
+    if(isset($atts['categoriaMenu'])){
+        $tax_query[] = array(
+                    'taxonomy' => 'categoria-menu',
+                    'terms' => $atts['categoriaMenu'],
+                    'field' => 'term_id'
+                );
+    }
+
     //obtener los datos del query
     $especialidades = wp_get_recent_posts(array(
         'post_type' => 'especialidades',
         'post_status' => 'publish',
-        'numberposts' => $atts['cantidadMostrar'],
-        'tax_query' => array(
-            array(
-                    'taxonomy' => 'categoria-menu',
-                    'terms' => $atts['categoriaMenu'],
-                    'field' => 'term_id'
-                ))
+        'numberposts' => $cantidad,
+        'tax_query' => $tax_query,
     ));
 
     //Revisar que haya resultados
@@ -106,7 +115,7 @@ function lapizzeria_especialidades_front_end($atts){
 
     $cuerpo = '';
     $cuerpo .='<h2 class="titulo-menu">';
-    $cuerpo .=$atts['tituloBloque'];
+    $cuerpo .=$titulo_bloque;
     $cuerpo .='</h2>';
     $cuerpo .='<ul class="nuestro-menu">';
 
