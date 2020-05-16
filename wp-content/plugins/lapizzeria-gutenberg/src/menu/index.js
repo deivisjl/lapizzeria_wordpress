@@ -14,29 +14,38 @@ registerBlockType('lapizzeria/menu',{
 		cantidadMostrar:{
 			type:'number',
 			//default:4
-		}
+		},
+		categoriaMenu:{
+			type:'number',
+		},
 	},
 	edit: withSelect((select, props) =>{
 
-		const { attributes: { cantidadMostrar }, setAttributes } = props;
+		const { attributes: { cantidadMostrar, categoriaMenu }, setAttributes } = props;
 
 		const onChangeCantidadMostrar = nuevaCantidad => {
 			setAttributes({ cantidadMostrar : parseInt(nuevaCantidad) })
+		}
+
+		const onChangeCategoriaMenu = nuevaCategoria => {
+			setAttributes({ categoriaMenu: nuevaCategoria})
 		}
 
 		return {
 			categorias: select("core").getEntityRecords('taxonomy','categoria-menu'),
 			//enviar una peticion a la API
 			especialidades: select("core").getEntityRecords('postType','especialidades',{
+				'categoria-menu': categoriaMenu,
 				per_page: cantidadMostrar || 4
 			}),
 			onChangeCantidadMostrar,
+			onChangeCategoriaMenu,
 			props
 			//especialidades declarada en el postType
 		};
 	})
 
-	(({categorias, especialidades, onChangeCantidadMostrar, props})=>{
+	(({categorias, especialidades, onChangeCantidadMostrar,onChangeCategoriaMenu, props})=>{
 
 		// Verificar especialidades
         if(!especialidades) {
@@ -63,7 +72,12 @@ registerBlockType('lapizzeria/menu',{
         	categoria['value'] = categoria.id;
         })	
 
-        const { attributes: { cantidadMostrar } } = props;
+        /*Valores por defecto*/
+        const opcionDefault = [{ value: '', label: ' -- Todos -- '}];
+
+        const listadoCategorias = [...opcionDefault,...categorias];
+
+        const { attributes: { cantidadMostrar, categoriaMenu } } = props;
 
 		return (
 				<>
@@ -96,7 +110,9 @@ registerBlockType('lapizzeria/menu',{
 									Categoría de especialidad
 								</label>
 								<SelectControl
-									options={categorias}
+									options={listadoCategorias}
+									onChange={onChangeCategoriaMenu}
+									value={categoriaMenu}
 								/>
 							</div>
 						</div>
