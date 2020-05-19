@@ -409,7 +409,23 @@ registerBlockType('lapizzeria/galeria', {
   },
   category: 'lapizzeria',
   edit: function edit(props) {
-    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h1", null, "En el editor");
+    var onSeleccionarNuevaImagen = function onSeleccionarNuevaImagen(nuevaImagen) {};
+
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "galeria-pizzeria"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(MediaUpload, {
+      onSelect: onSeleccionarNuevaImagen,
+      type: "image",
+      render: function render(open) {
+        return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(IconButton, {
+          className: "lapizzeria-agregar-imagen",
+          onClick: open,
+          icon: "format-image",
+          showTooltip: "true",
+          label: "Cambiar imagen"
+        });
+      }
+    }));
   },
   save: function save(props) {
     return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h1", null, "En el frontend");
