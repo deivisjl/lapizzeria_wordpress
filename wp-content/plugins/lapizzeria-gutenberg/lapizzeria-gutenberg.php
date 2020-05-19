@@ -60,7 +60,8 @@ function lapizzeria_registrar_bloques(){
 
 	//Arreglo de bloques
 	$blocks = [
-		'lapizzeria/boxes'
+		'lapizzeria/boxes',
+        'lapizzeria/galeria',
 	];
 
 	// Recorrer bloques y agregar scripts y styles
