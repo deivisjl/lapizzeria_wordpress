@@ -13,14 +13,32 @@ registerBlockType('lapizzeria/textoimagen',{
 		imagenFondo:{
 			type:'string',
 			selector: '.ingredientes-bloque'
-		}
+		},
+		tituloBloque:{
+			type:'string',
+			source:'html',
+			selector:'.texto-ingredientes h1'
+		},
+		textoBloque:{
+			type:'string',
+			source:'html',
+			selector:'.texto-ingredientes p'
+		},
 	},
 	edit:props =>{
 
-		const { attributes: {imagenFondo }, setAttributes } = props;
+		const { attributes: {imagenFondo, tituloBloque, textoBloque }, setAttributes } = props;
 
 		const onSeleccionarImagen = nuevaImagen => {	
 			setAttributes({ imagenFondo : nuevaImagen })
+		}
+
+		const onChangeTitulo = nuevoTitulo => {
+			setAttributes({ tituloBloque : nuevoTitulo })
+		}
+
+		const onChangeTexto = nuevoTexto => {
+			setAttributes({ textoBloque : nuevoTexto })	
 		}
 
 		return(
@@ -40,6 +58,20 @@ registerBlockType('lapizzeria/textoimagen',{
 					/>
 					<div className="contenido-ingredientes">
 						<div className="texto-ingredientes">
+							<h1 className="titulo">
+								<RichText
+									placeholder={'Agrega el Título del Hero'}
+									onChange={onChangeTitulo}
+									value={tituloBloque}
+								/>
+							</h1>
+							<p>
+								<RichText
+									placeholder={'Agrega el Texto del Hero'}
+									onChange={onChangeTexto}
+									value={textoBloque}
+								/>
+							</p>
 							<div className="imagen-ingredientes">
 
 							</div>

@@ -1009,15 +1009,40 @@ registerBlockType('lapizzeria/textoimagen', {
     imagenFondo: {
       type: 'string',
       selector: '.ingredientes-bloque'
+    },
+    tituloBloque: {
+      type: 'string',
+      source: 'html',
+      selector: '.texto-ingredientes h1'
+    },
+    textoBloque: {
+      type: 'string',
+      source: 'html',
+      selector: '.texto-ingredientes p'
     }
   },
   edit: function edit(props) {
-    var imagenFondo = props.attributes.imagenFondo,
+    var _props$attributes = props.attributes,
+        imagenFondo = _props$attributes.imagenFondo,
+        tituloBloque = _props$attributes.tituloBloque,
+        textoBloque = _props$attributes.textoBloque,
         setAttributes = props.setAttributes;
 
     var onSeleccionarImagen = function onSeleccionarImagen(nuevaImagen) {
       setAttributes({
         imagenFondo: nuevaImagen
+      });
+    };
+
+    var onChangeTitulo = function onChangeTitulo(nuevoTitulo) {
+      setAttributes({
+        tituloBloque: nuevoTitulo
+      });
+    };
+
+    var onChangeTexto = function onChangeTexto(nuevoTexto) {
+      setAttributes({
+        textoBloque: nuevoTexto
       });
     };
 
@@ -1043,7 +1068,17 @@ registerBlockType('lapizzeria/textoimagen', {
       className: "contenido-ingredientes"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: "texto-ingredientes"
-    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h1", {
+      className: "titulo"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText, {
+      placeholder: 'Agrega el Título del Hero',
+      onChange: onChangeTitulo,
+      value: tituloBloque
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText, {
+      placeholder: 'Agrega el Texto del Hero',
+      onChange: onChangeTexto,
+      value: textoBloque
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: "imagen-ingredientes"
     }))));
   },
