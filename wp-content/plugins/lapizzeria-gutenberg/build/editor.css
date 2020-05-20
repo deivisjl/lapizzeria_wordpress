@@ -84,3 +84,7 @@
 .boton-secundario:hover{
 	color:var(--blanco);
 }
+
+.hero-block .components-icon-button .dashicon{
+	color:var(--blanco);
+}
