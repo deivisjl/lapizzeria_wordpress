@@ -448,7 +448,17 @@ registerBlockType('lapizzeria/galeria', {
           label: "Cambiar imagen"
         });
       }
-    }));
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("h2", {
+      className: "texto-primario"
+    }, "Galer\xEDa"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("ul", {
+      className: "listado-imagenes"
+    }, imagenes.map(function (imagen) {
+      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("li", {
+        className: "imagen"
+      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("img", {
+        src: imagen.thumb
+      }));
+    })));
   },
   save: function save(props) {
     return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("h1", null, "En el frontend");
