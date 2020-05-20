@@ -1,5 +1,5 @@
 const { registerBlockType } = wp.blocks;
-const { MediaUpload, RichText, URLInputButton } = wp.editor;
+const { MediaUpload, RichText, URLInputButton, BlockControls, AlignmentToolbar } = wp.editor;
 const { IconButton } = wp.components;
 
 //logo para el bloque
@@ -29,11 +29,15 @@ registerBlockType('lapizzeria/hero',{
 			type:'string',
 			source:'attribute',
 			attribute:'href'
+		},
+		alinearContenido:{
+			type:'string',
+			default:'center',
 		}
 	},
 	edit: props =>{
 
-		const { attributes: {imagenHero, tituloHero, textoHero, urlHero }, setAttributes } = props;
+		const { attributes: {imagenHero, tituloHero, textoHero, urlHero, alinearContenido }, setAttributes } = props;
 
 		const onSeleccionarImagen = nuevaImagen => {	
 			setAttributes({ imagenHero: nuevaImagen.sizes.full.url })
@@ -51,10 +55,21 @@ registerBlockType('lapizzeria/hero',{
 			setAttributes({ urlHero: nuevaUrl })	
 		}
 
+		const onChangeAlinearContenido = nuevaAlineacion =>{
+			setAttributes({ alinearContenido: nuevaAlineacion })
+		}
+
 		return(
 				<div className="hero-block"
-					style={{ backgroundImage: `linear-gradient(rgba(0,0,0,.75), rgba(0,0,0,.75)), url(${imagenHero})` }}
+					style={{ backgroundImage: `linear-gradient(rgba(0,0,0,.75), rgba(0,0,0,.75)), url(${imagenHero})`, textAlign:alinearContenido }}
 				>
+				<BlockControls>
+					<AlignmentToolbar
+						onChange={onChangeAlinearContenido}
+						value={ alinearContenido }
+					/>
+				</BlockControls>
+
 					<MediaUpload
 						onSelect={onSeleccionarImagen}
 						type="image"
@@ -94,11 +109,11 @@ registerBlockType('lapizzeria/hero',{
 	},
 	save: props =>{
 		
-		const { attributes: {imagenHero, tituloHero, textoHero, urlHero }, setAttributes } = props;
+		const { attributes: {imagenHero, tituloHero, textoHero, urlHero, alinearContenido }, setAttributes } = props;
 
 		return(
 				<div className="hero-block"
-					style={{ backgroundImage: `linear-gradient(rgba(0,0,0,.75), rgba(0,0,0,.75)), url(${imagenHero})` }}
+					style={{ backgroundImage: `linear-gradient(rgba(0,0,0,.75), rgba(0,0,0,.75)), url(${imagenHero})`, textAlign:alinearContenido }}
 				>
 					<h1 className="titulo">
 						<RichText.Content value={tituloHero}/>

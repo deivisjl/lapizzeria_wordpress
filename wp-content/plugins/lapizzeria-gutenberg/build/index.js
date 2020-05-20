@@ -521,7 +521,9 @@ var registerBlockType = wp.blocks.registerBlockType;
 var _wp$editor = wp.editor,
     MediaUpload = _wp$editor.MediaUpload,
     RichText = _wp$editor.RichText,
-    URLInputButton = _wp$editor.URLInputButton;
+    URLInputButton = _wp$editor.URLInputButton,
+    BlockControls = _wp$editor.BlockControls,
+    AlignmentToolbar = _wp$editor.AlignmentToolbar;
 var IconButton = wp.components.IconButton; //logo para el bloque
 
 
@@ -550,6 +552,10 @@ registerBlockType('lapizzeria/hero', {
       type: 'string',
       source: 'attribute',
       attribute: 'href'
+    },
+    alinearContenido: {
+      type: 'string',
+      default: 'center'
     }
   },
   edit: function edit(props) {
@@ -558,6 +564,7 @@ registerBlockType('lapizzeria/hero', {
         tituloHero = _props$attributes.tituloHero,
         textoHero = _props$attributes.textoHero,
         urlHero = _props$attributes.urlHero,
+        alinearContenido = _props$attributes.alinearContenido,
         setAttributes = props.setAttributes;
 
     var onSeleccionarImagen = function onSeleccionarImagen(nuevaImagen) {
@@ -584,12 +591,22 @@ registerBlockType('lapizzeria/hero', {
       });
     };
 
+    var onChangeAlinearContenido = function onChangeAlinearContenido(nuevaAlineacion) {
+      setAttributes({
+        alinearContenido: nuevaAlineacion
+      });
+    };
+
     return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: "hero-block",
       style: {
-        backgroundImage: "linear-gradient(rgba(0,0,0,.75), rgba(0,0,0,.75)), url(".concat(imagenHero, ")")
+        backgroundImage: "linear-gradient(rgba(0,0,0,.75), rgba(0,0,0,.75)), url(".concat(imagenHero, ")"),
+        textAlign: alinearContenido
       }
-    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(MediaUpload, {
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(BlockControls, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(AlignmentToolbar, {
+      onChange: onChangeAlinearContenido,
+      value: alinearContenido
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(MediaUpload, {
       onSelect: onSeleccionarImagen,
       type: "image",
       render: function render(_ref) {
@@ -628,11 +645,13 @@ registerBlockType('lapizzeria/hero', {
         tituloHero = _props$attributes2.tituloHero,
         textoHero = _props$attributes2.textoHero,
         urlHero = _props$attributes2.urlHero,
+        alinearContenido = _props$attributes2.alinearContenido,
         setAttributes = props.setAttributes;
     return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: "hero-block",
       style: {
-        backgroundImage: "linear-gradient(rgba(0,0,0,.75), rgba(0,0,0,.75)), url(".concat(imagenHero, ")")
+        backgroundImage: "linear-gradient(rgba(0,0,0,.75), rgba(0,0,0,.75)), url(".concat(imagenHero, ")"),
+        textAlign: alinearContenido
       }
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h1", {
       className: "titulo"
