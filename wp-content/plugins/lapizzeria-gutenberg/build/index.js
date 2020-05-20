@@ -989,6 +989,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _pizzeria_icon_svg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../pizzeria-icon.svg */ "./src/pizzeria-icon.svg");
 
 var registerBlockType = wp.blocks.registerBlockType;
+var _wp$editor = wp.editor,
+    MediaUpload = _wp$editor.MediaUpload,
+    RichText = _wp$editor.RichText,
+    URLInputButton = _wp$editor.URLInputButton,
+    BlockControls = _wp$editor.BlockControls,
+    AlignmentToolbar = _wp$editor.AlignmentToolbar;
+var IconButton = wp.components.IconButton;
 /*Logo para el bloque*/
 
 
@@ -998,8 +1005,47 @@ registerBlockType('lapizzeria/textoimagen', {
     src: _pizzeria_icon_svg__WEBPACK_IMPORTED_MODULE_1__["ReactComponent"]
   },
   category: 'lapizzeria',
+  attributes: {
+    imagenFondo: {
+      type: 'string',
+      selector: '.ingredientes-bloque'
+    }
+  },
   edit: function edit(props) {
-    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, "Desde el Editor");
+    var imagenFondo = props.attributes.imagenFondo,
+        setAttributes = props.setAttributes;
+
+    var onSeleccionarImagen = function onSeleccionarImagen(nuevaImagen) {
+      setAttributes({
+        imagenFondo: nuevaImagen
+      });
+    };
+
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "ingredientes-bloque",
+      style: {
+        background: "url(".concat(imagenFondo, ")")
+      }
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(MediaUpload, {
+      onSelect: onSeleccionarImagen,
+      type: "image",
+      render: function render(_ref) {
+        var open = _ref.open;
+        return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(IconButton, {
+          className: "lapizzeria-agregar-imagen",
+          onClick: open,
+          icon: "format-image",
+          showTooltip: "true",
+          label: "Cambiar imagen"
+        });
+      }
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "contenido-ingredientes"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "texto-ingredientes"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "imagen-ingredientes"
+    }))));
   },
   save: function save(props) {
     return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, "Desde el FrontEnd");
