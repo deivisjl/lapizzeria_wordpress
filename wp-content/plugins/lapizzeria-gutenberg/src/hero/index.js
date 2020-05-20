@@ -33,11 +33,14 @@ registerBlockType('lapizzeria/hero',{
 		alinearContenido:{
 			type:'string',
 			default:'center',
+		},
+		alturaHero:{
+			type:'number'
 		}
 	},
 	edit: props =>{
 
-		const { attributes: {imagenHero, tituloHero, textoHero, urlHero, alinearContenido }, setAttributes } = props;
+		const { attributes: {imagenHero, tituloHero, textoHero, urlHero, alinearContenido, alturaHero }, setAttributes } = props;
 
 		const onSeleccionarImagen = nuevaImagen => {	
 			setAttributes({ imagenHero: nuevaImagen.sizes.full.url })
@@ -59,6 +62,10 @@ registerBlockType('lapizzeria/hero',{
 			setAttributes({ alinearContenido: nuevaAlineacion })
 		}
 
+		const onChangeAlturaHero = nuevaAltura =>{
+			setAttributes({ alturaHero: nuevaAltura })
+		}
+
 		return(
 			<>
 				<InspectorControls>
@@ -76,7 +83,8 @@ registerBlockType('lapizzeria/hero',{
 									min={300}
 									max={700}
 									step={10}
-									value={500}
+									value={ alturaHero || 500}
+									onChange={onChangeAlturaHero}
 								/>
 							</div>
 						</div>
@@ -84,7 +92,7 @@ registerBlockType('lapizzeria/hero',{
 				</InspectorControls>
 
 				<div className="hero-block"
-					style={{ backgroundImage: `linear-gradient(rgba(0,0,0,.75), rgba(0,0,0,.75)), url(${imagenHero})`, textAlign:alinearContenido }}
+					style={{ backgroundImage: `linear-gradient(rgba(0,0,0,.75), rgba(0,0,0,.75)), url(${imagenHero})`, textAlign:alinearContenido, height:`${alturaHero || 500}px` }}
 				>
 				<BlockControls>
 					<AlignmentToolbar
@@ -133,11 +141,11 @@ registerBlockType('lapizzeria/hero',{
 	},
 	save: props =>{
 		
-		const { attributes: {imagenHero, tituloHero, textoHero, urlHero, alinearContenido }, setAttributes } = props;
+		const { attributes: {imagenHero, tituloHero, textoHero, urlHero, alinearContenido, alturaHero }, setAttributes } = props;
 
 		return(
 				<div className="hero-block"
-					style={{ backgroundImage: `linear-gradient(rgba(0,0,0,.75), rgba(0,0,0,.75)), url(${imagenHero})`, textAlign:alinearContenido }}
+					style={{ backgroundImage: `linear-gradient(rgba(0,0,0,.75), rgba(0,0,0,.75)), url(${imagenHero})`, textAlign:alinearContenido, height:`${alturaHero || 500}px` }}
 				>
 					<h1 className="titulo">
 						<RichText.Content value={tituloHero}/>
