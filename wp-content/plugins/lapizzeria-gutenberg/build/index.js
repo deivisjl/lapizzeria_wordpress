@@ -735,6 +735,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _menu__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./menu */ "./src/menu/index.js");
 /* harmony import */ var _galeria__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./galeria */ "./src/galeria/index.js");
 /* harmony import */ var _hero__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./hero */ "./src/hero/index.js");
+/* harmony import */ var _textoimagen__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./textoimagen */ "./src/textoimagen/index.js");
+
 
 
 
@@ -970,6 +972,39 @@ function SvgPizzeriaIcon(props) {
 
 /* harmony default export */ __webpack_exports__["default"] = ("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxNi4wLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkNhcGFfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHdpZHRoPSIyNS4xNnB4IiBoZWlnaHQ9IjIzLjk1NHB4IiB2aWV3Qm94PSIwIDAgMjUuMTYgMjMuOTU0IiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCAyNS4xNiAyMy45NTQiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPHJlY3QgeD0iLTAuNDA1IiB5PSItMS42MTIiIGZpbGw9IiMxQjY2MDYiIHdpZHRoPSIyNy4wOSIgaGVpZ2h0PSIyNy4yNTUiLz4NCjxnPg0KCTxwYXRoIGZpbGw9IiNGRkZGRkYiIGQ9Ik0yLjk2NSwxOC43ODRWNS4yMjhoMy4yOTN2MTAuNzAzaDUuMjQ2djIuODUzSDIuOTY1eiIvPg0KCTxwYXRoIGZpbGw9IiNGRkZGRkYiIGQ9Ik0yMy4zMTYsOS40MDJjMCwwLjc5Mi0wLjE0NiwxLjQ1OS0wLjQzOSwyLjAwMWMtMC4yOTQsMC41NDItMC42ODksMC45OC0xLjE4OCwxLjMxMg0KCQljLTAuNDk4LDAuMzMyLTEuMDcyLDAuNTc0LTEuNzIzLDAuNzI4Yy0wLjY1MSwwLjE1My0xLjMyOCwwLjIyOS0yLjAyOSwwLjIyOWgtMS42Mjd2NS4xMTJoLTMuMjc1VjUuMjI4aDQuOTc5DQoJCWMwLjc0LDAsMS40MzMsMC4wNzMsMi4wNzcsMC4yMmMwLjY0NSwwLjE0OCwxLjIwNiwwLjM4MywxLjY4NSwwLjcwOWMwLjQ3OSwwLjMyNSwwLjg1NSwwLjc1NCwxLjEzMSwxLjI4Mg0KCQlDMjMuMTgsNy45NjksMjMuMzE2LDguNjI0LDIzLjMxNiw5LjQwMnogTTIwLjA0Myw5LjQyYzAtMC4zMTktMC4wNjMtMC41ODEtMC4xOTEtMC43ODVzLTAuMy0wLjM2Mi0wLjUxNy0wLjQ3OA0KCQljLTAuMjE4LTAuMTE2LTAuNDYyLTAuMTkyLTAuNzM3LTAuMjI5Yy0wLjI3NC0wLjAzOS0wLjU1OS0wLjA1OC0wLjg1Mi0wLjA1OGgtMS40MzZ2My4xOTdoMS4zNzdjMC4zMDcsMCwwLjYwMS0wLjAyNSwwLjg4Mi0wLjA3Ng0KCQljMC4yOC0wLjA1MiwwLjUzMi0wLjE0MSwwLjc1Ni0wLjI2OWMwLjIyNC0wLjEyNywwLjM5OC0wLjI5NywwLjUyNi0wLjUwOEMxOS45NzksMTAuMDA1LDIwLjA0Myw5Ljc0MSwyMC4wNDMsOS40MnoiLz4NCjwvZz4NCjwvc3ZnPg0K");
 
+
+/***/ }),
+
+/***/ "./src/textoimagen/index.js":
+/*!**********************************!*\
+  !*** ./src/textoimagen/index.js ***!
+  \**********************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _pizzeria_icon_svg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../pizzeria-icon.svg */ "./src/pizzeria-icon.svg");
+
+var registerBlockType = wp.blocks.registerBlockType;
+/*Logo para el bloque*/
+
+
+registerBlockType('lapizzeria/textoimagen', {
+  title: 'Pizzeria Texto e Imagen',
+  icon: {
+    src: _pizzeria_icon_svg__WEBPACK_IMPORTED_MODULE_1__["ReactComponent"]
+  },
+  category: 'lapizzeria',
+  edit: function edit(props) {
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, "Desde el Editor");
+  },
+  save: function save(props) {
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, "Desde el FrontEnd");
+  }
+});
 
 /***/ }),
 
