@@ -189,5 +189,31 @@ ul.listado-imagenes{
 
 /* bloque contenedor*/
 .bloque-contenedor{
-	min-height: 100rem;
+	background-repeat: no-repeat;
+	background-position: top left;
+}
+
+.contenido-bloque{
+	padding: 10rem 0;
+}
+
+@media(min-width: 768px){
+	.contenido-bloque{
+		min-height: 90rem;
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		grid-gap: 2rem;
+	}
+}
+
+.bloques-internos{
+	padding: 3rem;
+	margin: 2rem;
+	background-color: rgba(255,255,255,0.8);
+}
+
+@media(min-width: 768px){
+	.bloques-internos{
+		grid-column: 2 / 3;
+	}
 }
