@@ -422,6 +422,15 @@ registerBlockType('lapizzeria/galeria', {
         imagenes = _props$attributes$ima === void 0 ? [] : _props$attributes$ima,
         setAttributes = props.setAttributes;
 
+    var borrarImagen = function borrarImagen(imagenIndex) {
+      var nuevasImagenes = imagenes.filter(function (imagen, index) {
+        return index !== imagenIndex;
+      });
+      setAttributes({
+        imagenes: nuevasImagenes
+      });
+    };
+
     var onSeleccionarNuevaImagen = function onSeleccionarNuevaImagen(nuevaImagen) {
       var imagen = {
         thumb: nuevaImagen.sizes.medium.url,
@@ -452,13 +461,13 @@ registerBlockType('lapizzeria/galeria', {
       className: "texto-primario"
     }, "Galer\xEDa"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("ul", {
       className: "listado-imagenes"
-    }, imagenes.map(function (imagen) {
+    }, imagenes.map(function (imagen, index) {
       return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("li", {
         className: "imagen"
       }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", {
         className: "borrar-imagen",
         onClick: function onClick() {
-          return console.log(imagen);
+          return borrarImagen(index);
         }
       }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("span", {
         className: "dashicons dashicons-trash"

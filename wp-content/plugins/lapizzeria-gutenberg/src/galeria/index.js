@@ -19,6 +19,11 @@ registerBlockType('lapizzeria/galeria', {
 		// extraer los valores
         const { attributes: { imagenes = [] }, setAttributes } = props;
 
+        const borrarImagen = imagenIndex => {
+        	const nuevasImagenes = imagenes.filter((imagen, index) => index !== imagenIndex);
+        	setAttributes({ imagenes : nuevasImagenes })
+        }
+
 		const onSeleccionarNuevaImagen = nuevaImagen =>{
 			const imagen ={
 				thumb: nuevaImagen.sizes.medium.url,
@@ -46,11 +51,11 @@ registerBlockType('lapizzeria/galeria', {
 					/>
 					<h2 className="texto-primario">Galería</h2>
 					<ul className="listado-imagenes">
-						{imagenes.map(imagen => (
+						{imagenes.map((imagen, index) => (
 							<li className="imagen">
 							<div 
 								className="borrar-imagen"
-								onClick={()=>console.log(imagen)}
+								onClick={()=>borrarImagen(index)}
 							>
 							<span className="dashicons dashicons-trash"></span>
 							</div>
