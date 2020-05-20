@@ -1024,6 +1024,13 @@ registerBlockType('lapizzeria/textoimagen', {
       type: 'string',
       source: 'attribute',
       attribute: 'href'
+    },
+    imagenBloque: {
+      type: 'string',
+      source: 'attribute',
+      selector: '.imagen-ingredientes img',
+      attribute: 'src',
+      default: _pizzeria_icon_svg__WEBPACK_IMPORTED_MODULE_1__["ReactComponent"]
     }
   },
   edit: function edit(props) {
@@ -1032,6 +1039,7 @@ registerBlockType('lapizzeria/textoimagen', {
         tituloBloque = _props$attributes.tituloBloque,
         textoBloque = _props$attributes.textoBloque,
         enlaceBloque = _props$attributes.enlaceBloque,
+        imagenBloque = _props$attributes.imagenBloque,
         setAttributes = props.setAttributes;
 
     var onSeleccionarImagen = function onSeleccionarImagen(nuevaImagen) {
@@ -1055,6 +1063,12 @@ registerBlockType('lapizzeria/textoimagen', {
     var onChangeURL = function onChangeURL(nuevaURL) {
       setAttributes({
         enlaceBloque: nuevaURL
+      });
+    };
+
+    var onSeleccionarImagenIngredientes = function onSeleccionarImagenIngredientes(nuevaImagen) {
+      setAttributes({
+        imagenBloque: nuevaImagen
       });
     };
 
@@ -1098,7 +1112,22 @@ registerBlockType('lapizzeria/textoimagen', {
       url: enlaceBloque
     })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: "imagen-ingredientes"
-    })));
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("img", {
+      src: imagenBloque
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(MediaUpload, {
+      onSelect: onSeleccionarImagenIngredientes,
+      type: "image",
+      render: function render(_ref2) {
+        var open = _ref2.open;
+        return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(IconButton, {
+          className: "lapizzeria-agregar-imagen",
+          onClick: open,
+          icon: "format-image",
+          showTooltip: "true",
+          label: "Cambiar imagen"
+        });
+      }
+    }))));
   },
   save: function save(props) {
     return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, "Desde el FrontEnd");

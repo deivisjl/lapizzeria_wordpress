@@ -29,10 +29,17 @@ registerBlockType('lapizzeria/textoimagen',{
 			source:'attribute',
 			attribute:'href'
 		},
+		imagenBloque:{
+			type:'string',
+			source:'attribute',
+			selector:'.imagen-ingredientes img',
+			attribute:'src',
+			default:Logo
+		},
 	},
 	edit:props =>{
 
-		const { attributes: {imagenFondo, tituloBloque, textoBloque,enlaceBloque }, setAttributes } = props;
+		const { attributes: {imagenFondo, tituloBloque, textoBloque,enlaceBloque, imagenBloque }, setAttributes } = props;
 
 		const onSeleccionarImagen = nuevaImagen => {	
 			setAttributes({ imagenFondo : nuevaImagen })
@@ -48,6 +55,10 @@ registerBlockType('lapizzeria/textoimagen',{
 
 		const onChangeURL = nuevaURL =>{
 			setAttributes({ enlaceBloque: nuevaURL})
+		}
+
+		const onSeleccionarImagenIngredientes = nuevaImagen =>{
+			setAttributes({ imagenBloque: nuevaImagen })
 		}
 
 		return(
@@ -90,7 +101,20 @@ registerBlockType('lapizzeria/textoimagen',{
 							/>
 						</div>
 						<div className="imagen-ingredientes">
-
+						<img src={imagenBloque}/>
+							<MediaUpload
+									onSelect={onSeleccionarImagenIngredientes}
+									type="image"
+									render={({open}) =>(
+										<IconButton
+											className="lapizzeria-agregar-imagen"
+											onClick={open}
+											icon="format-image"
+											showTooltip="true"
+											label="Cambiar imagen"
+										/>
+									)}
+								/>
 						</div>
 					</div>
 				</div>	
