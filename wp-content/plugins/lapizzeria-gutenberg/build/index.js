@@ -523,8 +523,12 @@ var _wp$editor = wp.editor,
     RichText = _wp$editor.RichText,
     URLInputButton = _wp$editor.URLInputButton,
     BlockControls = _wp$editor.BlockControls,
-    AlignmentToolbar = _wp$editor.AlignmentToolbar;
-var IconButton = wp.components.IconButton; //logo para el bloque
+    AlignmentToolbar = _wp$editor.AlignmentToolbar,
+    InspectorControls = _wp$editor.InspectorControls;
+var _wp$components = wp.components,
+    IconButton = _wp$components.IconButton,
+    PanelBody = _wp$components.PanelBody,
+    TextControl = _wp$components.TextControl; //logo para el bloque
 
 
 registerBlockType('lapizzeria/hero', {
@@ -597,7 +601,22 @@ registerBlockType('lapizzeria/hero', {
       });
     };
 
-    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(InspectorControls, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, {
+      title: 'Altura Hero',
+      initilOpen: true
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "components-base-control"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "components-base-control__field"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("label", {
+      className: "components-base-control__label"
+    }, "Altura en Pixeles"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(TextControl, {
+      type: "number",
+      min: 300,
+      max: 700,
+      step: 10,
+      value: 500
+    }))))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: "hero-block",
       style: {
         backgroundImage: "linear-gradient(rgba(0,0,0,.75), rgba(0,0,0,.75)), url(".concat(imagenHero, ")"),
@@ -637,7 +656,7 @@ registerBlockType('lapizzeria/hero', {
     }, "Leer M\xE1s")), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(URLInputButton, {
       onChange: onChangeUrl,
       url: urlHero
-    }));
+    })));
   },
   save: function save(props) {
     var _props$attributes2 = props.attributes,

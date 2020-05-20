@@ -1,6 +1,6 @@
 const { registerBlockType } = wp.blocks;
-const { MediaUpload, RichText, URLInputButton, BlockControls, AlignmentToolbar } = wp.editor;
-const { IconButton } = wp.components;
+const { MediaUpload, RichText, URLInputButton, BlockControls, AlignmentToolbar, InspectorControls } = wp.editor;
+const { IconButton, PanelBody, TextControl } = wp.components;
 
 //logo para el bloque
 
@@ -60,6 +60,29 @@ registerBlockType('lapizzeria/hero',{
 		}
 
 		return(
+			<>
+				<InspectorControls>
+					<PanelBody
+						title={'Altura Hero'}
+						initilOpen={true}
+					>	
+						<div className="components-base-control">
+							<div className="components-base-control__field">
+								<label className="components-base-control__label">
+									Altura en Pixeles
+								</label>
+								<TextControl
+									type="number"
+									min={300}
+									max={700}
+									step={10}
+									value={500}
+								/>
+							</div>
+						</div>
+					</PanelBody>	
+				</InspectorControls>
+
 				<div className="hero-block"
 					style={{ backgroundImage: `linear-gradient(rgba(0,0,0,.75), rgba(0,0,0,.75)), url(${imagenHero})`, textAlign:alinearContenido }}
 				>
@@ -105,6 +128,7 @@ registerBlockType('lapizzeria/hero',{
 						url={urlHero}
 					/>
 				</div>
+			</>
 			)
 	},
 	save: props =>{
