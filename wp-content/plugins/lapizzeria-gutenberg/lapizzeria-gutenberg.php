@@ -149,3 +149,12 @@ function lapizzeria_especialidades_front_end($atts){
 
     return $cuerpo;
 }
+
+/** Agrega lightbox a plugin */
+function lapizzeria_frontend_scripts() {
+    wp_enqueue_style('lightbox', 'https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/css/lightbox.min.css', array(), '2.11.1');
+
+    wp_enqueue_script('lightboxjs', 'https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/js/lightbox.min.js', array('jquery'), '2.11.1', true);
+}
+
+add_action('wp_enqueue_scripts', 'lapizzeria_frontend_scripts');

@@ -492,9 +492,12 @@ registerBlockType('lapizzeria/galeria', {
     }, imagenes.map(function (imagen) {
       return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("li", {
         className: "imagen"
+      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("a", {
+        href: imagen.full,
+        "data-lightbox": "galeria"
       }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("img", {
         src: imagen.thumb
-      }));
+      })));
     })));
   }
 });
