@@ -398,7 +398,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _pizzeria_icon_svg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../pizzeria-icon.svg */ "./src/pizzeria-icon.svg");
 
 var registerBlockType = wp.blocks.registerBlockType;
-var MediaUpload = wp.editor.MediaUpload;
+var _wp$editor = wp.editor,
+    MediaUpload = _wp$editor.MediaUpload,
+    InnerBlocks = _wp$editor.InnerBlocks;
 var IconButton = wp.components.IconButton; //logo para el bloque
 
 
@@ -459,7 +461,7 @@ registerBlockType('lapizzeria/contenedor', {
       }
     })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: "bloques-internos"
-    })));
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(InnerBlocks, null))));
   },
   save: function save(props) {
     return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h1", null, "En el front");

@@ -1,5 +1,5 @@
 const { registerBlockType } = wp.blocks;
-const { MediaUpload } = wp.editor;
+const { MediaUpload, InnerBlocks } = wp.editor;
 const { IconButton } = wp.components;
 
 //logo para el bloque
@@ -54,7 +54,7 @@ registerBlockType('lapizzeria/contenedor', {
 							/>
 						</div>
 						<div className="bloques-internos">
-								
+							<InnerBlocks/>
 						</div>
 					</div>
 				</div>
