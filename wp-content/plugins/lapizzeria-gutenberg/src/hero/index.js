@@ -38,6 +38,9 @@ registerBlockType('lapizzeria/hero',{
 			type:'number'
 		}
 	},
+	supports:{
+		align:['wide','full']
+	},
 	edit: props =>{
 
 		const { attributes: {imagenHero, tituloHero, textoHero, urlHero, alinearContenido, alturaHero }, setAttributes } = props;
@@ -135,6 +138,22 @@ registerBlockType('lapizzeria/hero',{
 						onChange={onChangeUrl}
 						url={urlHero}
 					/>
+					<div className="contenido-hero">
+						<h1 className="titulo">
+						<RichText
+								placeholder={'Agrega el Título del Hero'}
+								onChange={onChangeTitulo}
+								value={tituloHero}
+							/>
+						</h1>
+						<p className="titulo">
+							<RichText
+								placeholder={'Agrega el Texto del Hero'}
+								onChange={onChangeTexto}
+								value={textoHero}
+							/>
+						</p>
+					</div>
 				</div>
 			</>
 			)
@@ -147,14 +166,16 @@ registerBlockType('lapizzeria/hero',{
 				<div className="hero-block"
 					style={{ backgroundImage: `linear-gradient(rgba(0,0,0,.75), rgba(0,0,0,.75)), url(${imagenHero})`, textAlign:alinearContenido, height:`${alturaHero || 500}px` }}
 				>
-					<h1 className="titulo">
-						<RichText.Content value={tituloHero}/>
-					</h1>
-					<p className="titulo">
-						<RichText.Content value={textoHero}/>
-					</p>
-					<div>
-						<a href={urlHero} className="boton boton-primario">Leer Más</a>
+					<div className="contenido-hero">
+						<h1 className="titulo">
+							<RichText.Content value={tituloHero}/>
+						</h1>
+						<p className="titulo">
+							<RichText.Content value={textoHero}/>
+						</p>
+						<div>
+							<a href={urlHero} className="boton boton-primario">Leer Más</a>
+						</div>
 					</div>
 				</div>
 			)

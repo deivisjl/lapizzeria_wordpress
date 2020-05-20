@@ -565,6 +565,9 @@ registerBlockType('lapizzeria/hero', {
       type: 'number'
     }
   },
+  supports: {
+    align: ['wide', 'full']
+  },
   edit: function edit(props) {
     var _props$attributes = props.attributes,
         imagenHero = _props$attributes.imagenHero,
@@ -668,7 +671,21 @@ registerBlockType('lapizzeria/hero', {
     }, "Leer M\xE1s")), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(URLInputButton, {
       onChange: onChangeUrl,
       url: urlHero
-    })));
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "contenido-hero"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h1", {
+      className: "titulo"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText, {
+      placeholder: 'Agrega el Título del Hero',
+      onChange: onChangeTitulo,
+      value: tituloHero
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", {
+      className: "titulo"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText, {
+      placeholder: 'Agrega el Texto del Hero',
+      onChange: onChangeTexto,
+      value: textoHero
+    })))));
   },
   save: function save(props) {
     var _props$attributes2 = props.attributes,
@@ -686,6 +703,8 @@ registerBlockType('lapizzeria/hero', {
         textAlign: alinearContenido,
         height: "".concat(alturaHero || 500, "px")
       }
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "contenido-hero"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h1", {
       className: "titulo"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText.Content, {
@@ -697,7 +716,7 @@ registerBlockType('lapizzeria/hero', {
     })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("a", {
       href: urlHero,
       className: "boton boton-primario"
-    }, "Leer M\xE1s")));
+    }, "Leer M\xE1s"))));
   }
 });
 
