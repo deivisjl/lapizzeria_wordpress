@@ -10,14 +10,24 @@ registerBlockType('lapizzeria/hero',{
 	title:'La Pizzeria Hero',
 	icon: { src: Logo},
 	category: 'lapizzeria',
+	attributes:{
+		imagenHero:{
+			type:'string',
+			selector: '.hero-block'
+		}
+	},
 	edit: props =>{
-		
-		const onSeleccionarImagen = nuevaImagen => {
 
+		const { attributes: {imagenHero}, setAttributes } = props;
+
+		const onSeleccionarImagen = nuevaImagen => {	
+			setAttributes({ imagenHero: nuevaImagen.sizes.full.url })
 		}
 
 		return(
-				<div className="hero-block">
+				<div className="hero-block"
+					style={{ backgroundImage: `linear-gradient(rgba(0,0,0,.75), rgba(0,0,0,.75)), url(${imagenHero})` }}
+				>
 					<MediaUpload
 						onSelect={onSeleccionarImagen}
 						type="image"
