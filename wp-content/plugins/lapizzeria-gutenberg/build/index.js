@@ -995,8 +995,7 @@ var _wp$editor = wp.editor,
     URLInputButton = _wp$editor.URLInputButton,
     BlockControls = _wp$editor.BlockControls,
     AlignmentToolbar = _wp$editor.AlignmentToolbar;
-var IconButton = wp.components.IconButton;
-/*Logo para el bloque*/
+var IconButton = wp.components.IconButton; // Logo para el bloque
 
 
 registerBlockType('lapizzeria/textoimagen', {
@@ -1033,7 +1032,11 @@ registerBlockType('lapizzeria/textoimagen', {
       default: _pizzeria_icon_svg__WEBPACK_IMPORTED_MODULE_1__["ReactComponent"]
     }
   },
+  supports: {
+    align: ['wide', 'full']
+  },
   edit: function edit(props) {
+    // extraer de props
     var _props$attributes = props.attributes,
         imagenFondo = _props$attributes.imagenFondo,
         tituloBloque = _props$attributes.tituloBloque,
@@ -1044,7 +1047,7 @@ registerBlockType('lapizzeria/textoimagen', {
 
     var onSeleccionarImagen = function onSeleccionarImagen(nuevaImagen) {
       setAttributes({
-        imagenFondo: nuevaImagen
+        imagenFondo: nuevaImagen.sizes.full.url
       });
     };
 
@@ -1060,22 +1063,22 @@ registerBlockType('lapizzeria/textoimagen', {
       });
     };
 
-    var onChangeURL = function onChangeURL(nuevaURL) {
+    var onChangeURL = function onChangeURL(nuevaUrl) {
       setAttributes({
-        enlaceBloque: nuevaURL
+        enlaceBloque: nuevaUrl
       });
     };
 
     var onSeleccionarImagenIngredientes = function onSeleccionarImagenIngredientes(nuevaImagen) {
       setAttributes({
-        imagenBloque: nuevaImagen
+        imagenBloque: nuevaImagen.sizes.full.url
       });
     };
 
     return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: "ingredientes-bloque",
       style: {
-        background: "url(".concat(imagenFondo, ")")
+        backgroundImage: "url(".concat(imagenFondo, ")")
       }
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(MediaUpload, {
       onSelect: onSeleccionarImagen,
@@ -1087,7 +1090,7 @@ registerBlockType('lapizzeria/textoimagen', {
           onClick: open,
           icon: "format-image",
           showTooltip: "true",
-          label: "Cambiar imagen"
+          label: "Cambiar Imagen"
         });
       }
     }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
@@ -1097,16 +1100,16 @@ registerBlockType('lapizzeria/textoimagen', {
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h1", {
       className: "titulo"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText, {
-      placeholder: 'Agrega el Título del Hero',
+      placeholder: 'Agrega el Titulo del Hero',
       onChange: onChangeTitulo,
       value: tituloBloque
     })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText, {
-      placeholder: 'Agrega el Texto del Hero',
+      placeholder: 'Agrega el Titulo del Hero',
       onChange: onChangeTexto,
       value: textoBloque
     })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("a", {
-      className: "boton boton-secundario",
-      href: enlaceBloque
+      href: enlaceBloque,
+      className: "boton boton-secundario"
     }, "Leer M\xE1s")), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(URLInputButton, {
       onChange: onChangeURL,
       url: enlaceBloque
@@ -1124,13 +1127,42 @@ registerBlockType('lapizzeria/textoimagen', {
           onClick: open,
           icon: "format-image",
           showTooltip: "true",
-          label: "Cambiar imagen"
+          label: "Cambiar Imagen"
         });
       }
     }))));
   },
   save: function save(props) {
-    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, "Desde el FrontEnd");
+    // extraer de props
+    var _props$attributes2 = props.attributes,
+        imagenFondo = _props$attributes2.imagenFondo,
+        tituloBloque = _props$attributes2.tituloBloque,
+        textoBloque = _props$attributes2.textoBloque,
+        enlaceBloque = _props$attributes2.enlaceBloque,
+        imagenBloque = _props$attributes2.imagenBloque;
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "ingredientes-bloque",
+      style: {
+        backgroundImage: "url(".concat(imagenFondo, ")")
+      }
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "contenido-ingredientes"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "texto-ingredientes"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h1", {
+      className: "titulo"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText.Content, {
+      value: tituloBloque
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText.Content, {
+      value: textoBloque
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("a", {
+      href: enlaceBloque,
+      className: "boton boton-secundario"
+    }, "Leer M\xE1s"))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "imagen-ingredientes"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("img", {
+      src: imagenBloque
+    }))));
   }
 });
 
