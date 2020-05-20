@@ -477,7 +477,25 @@ registerBlockType('lapizzeria/galeria', {
     })));
   },
   save: function save(props) {
-    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("h1", null, "En el frontend");
+    var imagenes = props.attributes.imagenes;
+
+    if (imagenes.length === 0) {
+      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("p", null, "No hay imagenes");
+    }
+
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", {
+      className: "galeria-pizzeria"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("h2", {
+      className: "texto-primario"
+    }, "Galer\xEDa"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("ul", {
+      className: "listado-imagenes"
+    }, imagenes.map(function (imagen) {
+      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("li", {
+        className: "imagen"
+      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("img", {
+        src: imagen.thumb
+      }));
+    })));
   }
 });
 
