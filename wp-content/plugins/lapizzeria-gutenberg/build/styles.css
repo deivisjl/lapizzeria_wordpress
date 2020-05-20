@@ -122,3 +122,21 @@
 	font-family: var(--fuenteHeadings);
 	text-align: justify;
 }
+
+/* Galeria */
+.galeria-pizzeria h2{
+	color: var(--rojo);
+	font-size: 700;
+}
+
+.listado-imagenes{
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+	list-style: none !important;
+	margin-top: 3rem !important;
+	grid-gap: 2rem;
+}
+
+.imagen img{
+	display: block;
+}
