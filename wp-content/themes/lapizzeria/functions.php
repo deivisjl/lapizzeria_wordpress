@@ -2,6 +2,8 @@
 
 function lapizzeria_setup(){
 
+	/* titulos para SEO*/
+	add_theme_support('title-tag');
 	/* Gutenberg */
 
 	/* Soporte de estilos por default de gutenberg en el tema*/
