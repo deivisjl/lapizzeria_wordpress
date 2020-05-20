@@ -623,7 +623,29 @@ registerBlockType('lapizzeria/hero', {
     }));
   },
   save: function save(props) {
-    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h1", null, "Frontend");
+    var _props$attributes2 = props.attributes,
+        imagenHero = _props$attributes2.imagenHero,
+        tituloHero = _props$attributes2.tituloHero,
+        textoHero = _props$attributes2.textoHero,
+        urlHero = _props$attributes2.urlHero,
+        setAttributes = props.setAttributes;
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "hero-block",
+      style: {
+        backgroundImage: "linear-gradient(rgba(0,0,0,.75), rgba(0,0,0,.75)), url(".concat(imagenHero, ")")
+      }
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h1", {
+      className: "titulo"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText.Content, {
+      value: tituloHero
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", {
+      className: "titulo"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText.Content, {
+      value: textoHero
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("a", {
+      href: urlHero,
+      className: "boton boton-primario"
+    }, "Leer M\xE1s")));
   }
 });
 
