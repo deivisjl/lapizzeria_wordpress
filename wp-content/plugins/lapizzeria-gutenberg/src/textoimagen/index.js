@@ -24,10 +24,15 @@ registerBlockType('lapizzeria/textoimagen',{
 			source:'html',
 			selector:'.texto-ingredientes p'
 		},
+		enlaceBloque:{
+			type:'string',
+			source:'attribute',
+			attribute:'href'
+		},
 	},
 	edit:props =>{
 
-		const { attributes: {imagenFondo, tituloBloque, textoBloque }, setAttributes } = props;
+		const { attributes: {imagenFondo, tituloBloque, textoBloque,enlaceBloque }, setAttributes } = props;
 
 		const onSeleccionarImagen = nuevaImagen => {	
 			setAttributes({ imagenFondo : nuevaImagen })
@@ -39,6 +44,10 @@ registerBlockType('lapizzeria/textoimagen',{
 
 		const onChangeTexto = nuevoTexto => {
 			setAttributes({ textoBloque : nuevoTexto })	
+		}
+
+		const onChangeURL = nuevaURL =>{
+			setAttributes({ enlaceBloque: nuevaURL})
 		}
 
 		return(
@@ -72,9 +81,16 @@ registerBlockType('lapizzeria/textoimagen',{
 									value={textoBloque}
 								/>
 							</p>
-							<div className="imagen-ingredientes">
-
+							<div>
+								<a className="boton boton-secundario" href={enlaceBloque}>Leer Más</a>
 							</div>
+							<URLInputButton
+								onChange={onChangeURL}
+								url={enlaceBloque}
+							/>
+						</div>
+						<div className="imagen-ingredientes">
+
 						</div>
 					</div>
 				</div>	

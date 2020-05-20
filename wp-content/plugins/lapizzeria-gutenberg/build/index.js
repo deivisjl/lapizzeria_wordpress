@@ -1019,6 +1019,11 @@ registerBlockType('lapizzeria/textoimagen', {
       type: 'string',
       source: 'html',
       selector: '.texto-ingredientes p'
+    },
+    enlaceBloque: {
+      type: 'string',
+      source: 'attribute',
+      attribute: 'href'
     }
   },
   edit: function edit(props) {
@@ -1026,6 +1031,7 @@ registerBlockType('lapizzeria/textoimagen', {
         imagenFondo = _props$attributes.imagenFondo,
         tituloBloque = _props$attributes.tituloBloque,
         textoBloque = _props$attributes.textoBloque,
+        enlaceBloque = _props$attributes.enlaceBloque,
         setAttributes = props.setAttributes;
 
     var onSeleccionarImagen = function onSeleccionarImagen(nuevaImagen) {
@@ -1043,6 +1049,12 @@ registerBlockType('lapizzeria/textoimagen', {
     var onChangeTexto = function onChangeTexto(nuevoTexto) {
       setAttributes({
         textoBloque: nuevoTexto
+      });
+    };
+
+    var onChangeURL = function onChangeURL(nuevaURL) {
+      setAttributes({
+        enlaceBloque: nuevaURL
       });
     };
 
@@ -1078,9 +1090,15 @@ registerBlockType('lapizzeria/textoimagen', {
       placeholder: 'Agrega el Texto del Hero',
       onChange: onChangeTexto,
       value: textoBloque
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("a", {
+      className: "boton boton-secundario",
+      href: enlaceBloque
+    }, "Leer M\xE1s")), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(URLInputButton, {
+      onChange: onChangeURL,
+      url: enlaceBloque
     })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: "imagen-ingredientes"
-    }))));
+    })));
   },
   save: function save(props) {
     return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, "Desde el FrontEnd");
