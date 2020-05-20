@@ -384,6 +384,90 @@ registerBlockType('lapizzeria/boxes', {
 
 /***/ }),
 
+/***/ "./src/contenedor/index.js":
+/*!*********************************!*\
+  !*** ./src/contenedor/index.js ***!
+  \*********************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _pizzeria_icon_svg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../pizzeria-icon.svg */ "./src/pizzeria-icon.svg");
+
+var registerBlockType = wp.blocks.registerBlockType;
+var MediaUpload = wp.editor.MediaUpload;
+var IconButton = wp.components.IconButton; //logo para el bloque
+
+
+/*
+	PASOS PARA CREAR UN BLOQUE EN GUTENBERG
+	1.- Importar el componente que utilizaras
+	2.- Coloca el componente donde deseas utilizarlo
+	3.- Crea una funcion que lea los contenidos
+	4.- Registra un atributo
+	5.- Extraer el contenido desde props
+	6.- Guarda el contenido con setAttributes
+	7.- Lee los contenidos guardados en save()
+*/
+
+registerBlockType('lapizzeria/contenedor', {
+  title: 'Pizzeria Contenedor',
+  icon: {
+    src: _pizzeria_icon_svg__WEBPACK_IMPORTED_MODULE_1__["ReactComponent"]
+  },
+  category: 'lapizzeria',
+  attributes: {
+    imagenFondo: {
+      type: 'string',
+      selector: '.bloque-contenedor'
+    }
+  },
+  edit: function edit(props) {
+    var imagenFondo = props.attributes.imagenFondo,
+        setAttributes = props.setAttributes;
+
+    var onSeleccionarImagen = function onSeleccionarImagen(nuevaImagen) {
+      setAttributes({
+        imagenFondo: nuevaImagen.sizes.full.url
+      });
+    };
+
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "bloque-contenedor",
+      style: {
+        backgroundImage: "url(".concat(imagenFondo, ")")
+      }
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "contenido-bloque"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "imagen-fondo"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(MediaUpload, {
+      onSelect: onSeleccionarImagen,
+      type: "image",
+      render: function render(_ref) {
+        var open = _ref.open;
+        return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(IconButton, {
+          className: "lapizzeria-agregar-imagen",
+          onClick: open,
+          icon: "format-image",
+          showTooltip: "true",
+          label: "Cambiar imagen"
+        });
+      }
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "bloques-internos"
+    })));
+  },
+  save: function save(props) {
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h1", null, "En el front");
+  }
+});
+
+/***/ }),
+
 /***/ "./src/galeria/index.js":
 /*!******************************!*\
   !*** ./src/galeria/index.js ***!
@@ -736,6 +820,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _galeria__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./galeria */ "./src/galeria/index.js");
 /* harmony import */ var _hero__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./hero */ "./src/hero/index.js");
 /* harmony import */ var _textoimagen__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./textoimagen */ "./src/textoimagen/index.js");
+/* harmony import */ var _contenedor__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./contenedor */ "./src/contenedor/index.js");
+
 
 
 
