@@ -15,3 +15,28 @@
 .texto-primario{
 	color:var(--rojo);
 }
+/*Galeria*/
+.imagen{
+	position: relative;
+}
+
+.imagen .borrar-imagen{
+	position: absolute;
+	right: 1rem;
+	top: 1rem;
+	background-color: rgba(0,0,0,.75);
+	height: 3rem;
+	width: 3rem;
+	border-radius: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.imagen .borrar-imagen:hover{
+	cursor: pointer;
+}
+
+.borrar-imagen .dashicons{
+	color: var(--blanco);
+}

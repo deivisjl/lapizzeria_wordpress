@@ -455,7 +455,14 @@ registerBlockType('lapizzeria/galeria', {
     }, imagenes.map(function (imagen) {
       return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("li", {
         className: "imagen"
-      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("img", {
+      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", {
+        className: "borrar-imagen",
+        onClick: function onClick() {
+          return console.log(imagen);
+        }
+      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("span", {
+        className: "dashicons dashicons-trash"
+      })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("img", {
         src: imagen.thumb
       }));
     })));
