@@ -518,7 +518,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _pizzeria_icon_svg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../pizzeria-icon.svg */ "./src/pizzeria-icon.svg");
 
 var registerBlockType = wp.blocks.registerBlockType;
-var MediaUpload = wp.editor.MediaUpload;
+var _wp$editor = wp.editor,
+    MediaUpload = _wp$editor.MediaUpload,
+    RichText = _wp$editor.RichText,
+    URLInputButton = _wp$editor.URLInputButton;
 var IconButton = wp.components.IconButton; //logo para el bloque
 
 
@@ -532,15 +535,52 @@ registerBlockType('lapizzeria/hero', {
     imagenHero: {
       type: 'string',
       selector: '.hero-block'
+    },
+    tituloHero: {
+      type: 'string',
+      source: 'html',
+      selector: '.hero-block h1'
+    },
+    textoHero: {
+      type: 'string',
+      source: 'html',
+      selector: '.hero-block p'
+    },
+    urlHero: {
+      type: 'string',
+      source: 'attribute',
+      attribute: 'href'
     }
   },
   edit: function edit(props) {
-    var imagenHero = props.attributes.imagenHero,
+    var _props$attributes = props.attributes,
+        imagenHero = _props$attributes.imagenHero,
+        tituloHero = _props$attributes.tituloHero,
+        textoHero = _props$attributes.textoHero,
+        urlHero = _props$attributes.urlHero,
         setAttributes = props.setAttributes;
 
     var onSeleccionarImagen = function onSeleccionarImagen(nuevaImagen) {
       setAttributes({
         imagenHero: nuevaImagen.sizes.full.url
+      });
+    };
+
+    var onChangeTitulo = function onChangeTitulo(nuevoTitulo) {
+      setAttributes({
+        tituloHero: nuevoTitulo
+      });
+    };
+
+    var onChangeTexto = function onChangeTexto(nuevoTexto) {
+      setAttributes({
+        textoHero: nuevoTexto
+      });
+    };
+
+    var onChangeUrl = function onChangeUrl(nuevaUrl) {
+      setAttributes({
+        urlHero: nuevaUrl
       });
     };
 
@@ -562,6 +602,24 @@ registerBlockType('lapizzeria/hero', {
           label: "Cambiar imagen"
         });
       }
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h1", {
+      className: "titulo"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText, {
+      placeholder: 'Agrega el Título del Hero',
+      onChange: onChangeTitulo,
+      value: tituloHero
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", {
+      className: "titulo"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText, {
+      placeholder: 'Agrega el Texto del Hero',
+      onChange: onChangeTexto,
+      value: textoHero
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("a", {
+      href: urlHero,
+      className: "boton boton-primario"
+    }, "Leer M\xE1s")), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(URLInputButton, {
+      onChange: onChangeUrl,
+      url: urlHero
     }));
   },
   save: function save(props) {
