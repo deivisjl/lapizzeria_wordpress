@@ -194,7 +194,7 @@ ul.listado-imagenes{
 }
 
 .contenido-bloque{
-	padding: 10rem 0;
+	padding: 5rem 0;
 }
 
 @media(min-width: 768px){
@@ -217,3 +217,15 @@ ul.listado-imagenes{
 		grid-column: 2 / 3;
 	}
 }
+
+.wpcf7 p label{
+	font-size: 2rem;
+}
+
+.wpcf7-form-control{
+	padding: 2rem;
+	border: 1px solid var(--grisClaro);
+	width: 100%;
+}
+
+
