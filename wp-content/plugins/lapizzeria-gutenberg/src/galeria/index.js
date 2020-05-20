@@ -9,10 +9,24 @@ registerBlockType('lapizzeria/galeria', {
 	title: 'La Pizzeria Galeria',
 	icon: { src: Logo },
 	category: 'lapizzeria',
+	attributes:{
+		imagenes:{
+			type:'array'
+		}
+	},
 	edit: props => {
 
+		// extraer los valores
+        const { attributes: { imagenes = [] }, setAttributes } = props;
+
 		const onSeleccionarNuevaImagen = nuevaImagen =>{
-			
+			const imagen ={
+				thumb: nuevaImagen.sizes.medium.url,
+				full: nuevaImagen.sizes.full.url,
+				id: nuevaImagen.id
+			}
+
+			setAttributes({ imagenes : [...imagenes, imagen] })
 		}
 
 		return(
@@ -20,7 +34,7 @@ registerBlockType('lapizzeria/galeria', {
 					<MediaUpload 
 						onSelect={onSeleccionarNuevaImagen}
 						type="image"
-						render={(open) =>(
+						render={({open}) =>(
 								<IconButton 
 									className="lapizzeria-agregar-imagen"
 									onClick={open}

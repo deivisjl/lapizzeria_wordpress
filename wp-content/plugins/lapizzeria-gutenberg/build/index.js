@@ -393,9 +393,12 @@ registerBlockType('lapizzeria/boxes', {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _pizzeria_icon_svg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../pizzeria-icon.svg */ "./src/pizzeria-icon.svg");
+/* harmony import */ var _babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/toConsumableArray */ "./node_modules/@babel/runtime/helpers/toConsumableArray.js");
+/* harmony import */ var _babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _pizzeria_icon_svg__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../pizzeria-icon.svg */ "./src/pizzeria-icon.svg");
+
 
 var registerBlockType = wp.blocks.registerBlockType;
 var MediaUpload = wp.editor.MediaUpload;
@@ -405,19 +408,39 @@ var IconButton = wp.components.IconButton; // Logo para el bloque
 registerBlockType('lapizzeria/galeria', {
   title: 'La Pizzeria Galeria',
   icon: {
-    src: _pizzeria_icon_svg__WEBPACK_IMPORTED_MODULE_1__["ReactComponent"]
+    src: _pizzeria_icon_svg__WEBPACK_IMPORTED_MODULE_2__["ReactComponent"]
   },
   category: 'lapizzeria',
+  attributes: {
+    imagenes: {
+      type: 'array'
+    }
+  },
   edit: function edit(props) {
-    var onSeleccionarNuevaImagen = function onSeleccionarNuevaImagen(nuevaImagen) {};
+    // extraer los valores
+    var _props$attributes$ima = props.attributes.imagenes,
+        imagenes = _props$attributes$ima === void 0 ? [] : _props$attributes$ima,
+        setAttributes = props.setAttributes;
 
-    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+    var onSeleccionarNuevaImagen = function onSeleccionarNuevaImagen(nuevaImagen) {
+      var imagen = {
+        thumb: nuevaImagen.sizes.medium.url,
+        full: nuevaImagen.sizes.full.url,
+        id: nuevaImagen.id
+      };
+      setAttributes({
+        imagenes: [].concat(_babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0___default()(imagenes), [imagen])
+      });
+    };
+
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", {
       className: "galeria-pizzeria"
-    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(MediaUpload, {
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(MediaUpload, {
       onSelect: onSeleccionarNuevaImagen,
       type: "image",
-      render: function render(open) {
-        return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(IconButton, {
+      render: function render(_ref) {
+        var open = _ref.open;
+        return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(IconButton, {
           className: "lapizzeria-agregar-imagen",
           onClick: open,
           icon: "format-image",
@@ -428,7 +451,7 @@ registerBlockType('lapizzeria/galeria', {
     }));
   },
   save: function save(props) {
-    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h1", null, "En el frontend");
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("h1", null, "En el frontend");
   }
 });
 
